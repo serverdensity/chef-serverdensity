@@ -1,6 +1,10 @@
 ChangeLog for chef-serverdensity
 ================================
 
+2.1.1 (10-03-2015)
+------------------
+- Update to use rest-client gem (rest_client depreciated)
+
 2.1.0 (10-10-2014)
 ------------------
  - Added support for managing plugins
