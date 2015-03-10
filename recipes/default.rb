@@ -4,8 +4,8 @@
 
 return unless node.serverdensity.enabled
 
-chef_gem 'rest_client'
-require 'rest_client'
+chef_gem 'rest-client'
+require 'rest-client'
 
 case node[:platform]
 
