@@ -366,6 +366,8 @@ https://supermarket.getchef.com/cookbooks/serverdensity
   * Modified by: Jonty Wareing <jonty@jonty.co.uk>
   * Modified by: Server Density <hello@serverdensity.com>
   * Rewritten by: Mal Graty <mal.graty@googlemail.com>
+  * Other Contributors:
+    * [Joe Marty](https://github.com/mltsy)
 
 ## License
 
