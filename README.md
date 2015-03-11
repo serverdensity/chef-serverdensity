@@ -2,6 +2,14 @@
 
 This cookbook provides an easy way to install the [Server Density agent](https://github.com/serverdensity/sd-agent/) and manage server specific alerts.
 
+### Table of Contents
+  - [Requirements](#requirements)
+  - [Basic Usage](#usage)
+  - [Attributes](#attributes)
+  - [Provided Recipes](#recipes)
+  - [Provided Resources (LWRPs)](#lwrp)
+  - [Notes](#notes)
+
 ## Requirements
 
 ### Cookbooks
@@ -35,7 +43,7 @@ This cookbook has dependencies on the following cookbooks:
 
   2. Use `include_recipe 'serverdensity'` to install `sd-agent`
 
-  3. Call the LWRP as described [below](#lwrp) to dynamically configure `sd-agent`
+  3. Call the LWRP (Lightweight Resource Provider) as described [below](#lwrp) to dynamically configure `sd-agent`
 
   4. Call the `serverdensity_plugin` [LWRP](#serverdensity_plugin) to configure plugins
 
@@ -155,6 +163,11 @@ node['serverdensity']['alerts']['high-load'] = {
 ```
 
 ## LWRP
+An LWRP is a "Lightweight Resource Provider", or in plain english, an additional resource type you can use in your recipes.  This cookbook provides three such resources:
+
+- `serverdensity`: the default resource for setting up the agent and registering devices, etc.
+- `serverdensity\_alert`: resource for setting up new alerts
+- `serverdensity\_plugin`: resource for installing and configuring plugins
 
 ### serverdensity
 
@@ -175,34 +188,41 @@ node['serverdensity']['alerts']['high-load'] = {
   - `update` **(default)**  
     setup api, either configure and enable or disable agent, sync metadata if API is available
 
-#### Getting Device Token
+#### Getting a Device's Agent-Key
 
-The configure action of this LWRP facilitates the dynamic configuration the `sd-agent`. The `agent_key` for the device can be acquired by various methods, in order attempts are made to:
+The `configure` action of this LWRP facilitates the dynamic configuration of the `sd-agent`. The `agent_key` for the device (which determines what device the agent connects to or whether it creates a new device) can be acquired by various methods. In this order, attempts are made to:
 
-  1. use the `agent_key` passed into LWRP
-  2. use `agent_key` defined in attributes
-  3. read the `agent_key` from `/etc/sd-agent-key` on the server
-  4. extract `agent_key` from EC2's internal metadata API
-  5. find the device in Server Density and request the `agent_key`
-  6. create the device in Server Density and request the `agent_key`
+  1. Use the `agent_key` passed into LWRP
+  2. Use `agent_key` defined in attributes (`node['serverdensity']['agent_key']`)
+  3. Read the `agent_key` from `/etc/sd-agent-key` on the server
+  4. Extract `agent_key` from EC2's internal metadata API (the last element of colon-separated user-data)
+  5. Find the device in Server Density and request the `agent_key`
+     - Based on the `device` passed to the LWRP; or (if `device` is not provided)
+     - Based on provider data (AWS/Opsworks instance-id); or (if there is no provider)
+     - Based on the name passed into the LWRP (the resource name)
+  6. Create the device in Server Density and request the `agent_key`
 
 Which of these steps take place depends on the various parameters passed in (see below), and when the `agent_key` is found. As soon as it is acquired no further steps are run.
 
 ##### Default
 
-The default recipe will use steps **2-4** to find an `agent_key`
+The default recipe (without API credentials provided) will use steps **2-4** to find an `agent_key`.
 
-##### Manual
+Below are examples of how to use the other steps.
+
+##### Providing an agent_key (step 1)
 
 ```rb
-# step 1 only
 serverdensity node.name do
   agent_key '00000000000000000000000000000000'
 end
 ```
 
-##### API v1
+##### Finding/creating a device using the API (steps 5 & 6)
 
+If you provide API credentials, this allows steps 5 & 6 to run.  That can be done either by setting the credentials in your attributes (as described under [Basic Config](#basic config)), or by providing the credentials directly to the LWRP:
+
+API V1:
 ```rb
 # steps 2-6
 serverdensity node.name do
@@ -211,7 +231,7 @@ serverdensity node.name do
 end
 ```
 
-##### API v2
+API V2:
 ```rb
 # steps 2-6
 serverdensity node.name do
@@ -219,12 +239,21 @@ serverdensity node.name do
 end
 ```
 
-#### Other settings
+##### Device Property
 
-##### Device
+Step **5** will use the criteria listed above in order of precedence to search for a matching device before proceeding to step 6 to create a new device.  As noted, the first criteria it checks for is the `device` property passed into the LWRP.
 
-By default, step **5** will use the hostname of the device to match against those stored in Server Density, however occasionally it makes more sense to match on something else, for example when using EC2:
+This property can be either a string, or a hash.  In the case of a string, it will search for a device with the given name.  In the case of a hash, it can be any field you want to search by (see API documentation for available fields: https://apidocs.serverdensity.com/#searching-for-a-device):
 
+String
+```rb
+serverdensity node.name do
+  token '00000000000000000000000000000000'
+  device 'app_server_1'
+end
+```
+
+Hash:
 ```rb
 # v2 only (v1 only supports name and hostname keys)
 serverdensity node.name do
@@ -232,10 +261,13 @@ serverdensity node.name do
   device :providerId => node.ec2.instance_id
 end
 ```
+(This is a silly example, of course, as EC2 instances would already use the same criteria by default)
+
+#### Other settings
 
 ##### Metadata
 
-The LWRP also supports writing metadata (via the sync action) to devices during creation via the API. Updating metadata is also supported by API v2.
+The LWRP also supports writing metadata (via the sync action) to devices during creation via the API. Updating metadata is also supported when using API v2.
 
 ```rb
 serverdensity node.name do
