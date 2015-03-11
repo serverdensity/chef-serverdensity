@@ -166,8 +166,8 @@ node['serverdensity']['alerts']['high-load'] = {
 An LWRP is a "Lightweight Resource Provider", or in plain english, an additional resource type you can use in your recipes.  This cookbook provides three such resources:
 
 - `serverdensity`: the default resource for setting up the agent and registering devices, etc.
-- `serverdensity\_alert`: resource for setting up new alerts
-- `serverdensity\_plugin`: resource for installing and configuring plugins
+- `serverdensity_alert`: resource for setting up new alerts
+- `serverdensity_plugin`: resource for installing and configuring plugins
 
 ### serverdensity
 
@@ -220,7 +220,7 @@ end
 
 ##### Finding/creating a device using the API (steps 5 & 6)
 
-If you provide API credentials, this allows steps 5 & 6 to run.  That can be done either by setting the credentials in your attributes (as described under [Basic Config](#basic config)), or by providing the credentials directly to the LWRP:
+If you provide API credentials, this allows steps 5 & 6 to run.  That can be done either by setting the credentials in your attributes (as described under [Basic Config](#basic-config)), or by providing the credentials directly to the LWRP:
 
 API V1:
 ```rb
