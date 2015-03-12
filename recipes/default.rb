@@ -4,8 +4,10 @@
 
 return unless node.serverdensity.enabled
 
-chef_gem 'rest-client'
-require 'rest-client'
+chef_gem 'rest-client' do
+  action :install
+  compile_time false if Chef::Resource::ChefGem.method_defined?(:compile_time)
+end
 
 case node[:platform]
 
