@@ -49,6 +49,8 @@ module ServerDensity
       private
 
       def request(method, path, payload, options = {}, &block)
+        require 'rest-client'
+
         options[:params] = if options.has_key? :params
           params.merge(options[:params])
         else
@@ -66,6 +68,8 @@ module ServerDensity
       end
 
       def response(res)
+        require 'rest-client'
+
         body = Chef::JSONCompat.from_json(res)
         RestClient::Response.create(body, res.net_http_res, res.args)
       end
