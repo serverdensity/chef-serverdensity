@@ -133,8 +133,10 @@ end
 
 def device
   return unless ServerDensity::API.configured?
-  query = if provider.empty?
-    @new_resource.device || @new_resource.name
+  query = if @new_resource.device
+    @new_resource.device
+  elsif provider.empty?
+    @new_resource.name
   else
     provider
   end
