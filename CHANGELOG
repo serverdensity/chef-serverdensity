@@ -1,6 +1,11 @@
 ChangeLog for chef-serverdensity
 ================================
 
+2.1.2 (12-03-2015)
+------------------
+- Allow the device attribute to override a built-in device provider (AWS)
+- Move chef_gem to converge time for Chef 12.1.0
+
 2.1.1 (10-03-2015)
 ------------------
 - Update to use rest-client gem (rest_client depreciated)
