@@ -4,7 +4,7 @@ maintainer_email   'hello@serverdensity.com'
 license            'MIT'
 description        'Installs/configures Server Density sd-agent'
 long_description   IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version            '2.1.3'
+version            '2.1.4'
 
 depends 'apt', '~> 2.6'
 depends 'yum', '~> 3.3'
