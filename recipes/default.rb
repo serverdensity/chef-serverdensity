@@ -5,6 +5,7 @@
 return unless node.serverdensity.enabled
 
 chef_gem 'rest-client' do
+  version '~> 1.7.3'
   action :install
   compile_time false if Chef::Resource::ChefGem.method_defined?(:compile_time)
 end
