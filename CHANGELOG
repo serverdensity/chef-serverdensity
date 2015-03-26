@@ -1,6 +1,10 @@
 ChangeLog for chef-serverdensity
 ================================
 
+2.1.4 (26-03-2015)
+------------------
+- Use 1.7.3 rest-client (fix for "Unable to acquire a ServerDensity agent_key")
+
 2.1.3 (12-03-2015)
 ------------------
 - Add matchers library for ChefSpec 
