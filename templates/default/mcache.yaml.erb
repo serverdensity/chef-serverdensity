@@ -1,0 +1,7 @@
+init_config:
+
+instances:
+  - url: <%= @memcache_url %>  # url used to connect to the memcached instance
+<% if @memcache_port %>
+    port: <%= @memcache_port %> # If this line is not present, port will default to 11211
+<% end %>

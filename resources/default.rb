@@ -1,3 +1,4 @@
+
 #
 # Cookbook Name:: serverdensity
 # Resource:: default
@@ -15,13 +16,7 @@ attribute :name,
   :name_attribute => true,
   :required => true
 
-# apiv1 credentials
-attribute :username,
-  :kind_of => String
-attribute :password,
-  :kind_of => String
-
-# apiv2 token
+# api token
 attribute :token,
   :kind_of => String
 

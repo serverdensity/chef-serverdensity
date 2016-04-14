@@ -3,74 +3,73 @@
 # See http://www.serverdensity.com/docs/agent/configvariables/
 
 [Main]
-sd_url: <%= @sd_url %>
+sd_account: <%= @sd_account %>
 agent_key: <%= @agent_key %>
+<% if @proxy_host %>
+# If you need a proxy to connect to the Internet, provide the settings here
 
+proxy_host: <%= @proxy_host %>
+<% end %>
+<% if @proxy_port %>
+proxy_port: <%= @proxy_port %>
+<% end %>
+<% if @proxy_user %>
+proxy_user: <%= @proxy_user %>
+<% end %>
+<% if @proxy_password %>
+proxy_password: <%= @proxy_password %>
+<% end %>
+<% if @proxy_forbid_method_switch %>
+# To be used with some proxys that return a 302 which make curl switch from POST to GET
+# See http://stackoverflow.com/questions/8156073/curl-violate-rfc-2616-10-3-2-and-switch-from-post-to-get
+proxy_forbid_method_switch: <%= @proxy_forbid_method_switch %>
+<% end %>
+<% if @hostname %>
+# Force the hostname to whatever you want.
+hostname: <%= @hostname %>
+<% end %>
+<% if @plugin_dir %>
+#
+# Plugins
+#
+# Leave blank to ignore.
+# See https://support.serverdensity.com/hc/en-us/articles/213074438-Information-about-Custom-Plugins
+#
+plugin_directory: <%= @plugin_dir  %>
+<% end %>
+<% if @log_level %>
+# ========================================================================== #
+# Logging
+# See https://support.serverdensity.com/hc/en-us/articles/213093038-Log-levels-agent-debug-mode
+# ========================================================================== #
+
+log_level: <%= @log_level %>
+<% end %>
+
+
+<% if @collector_log_file %>
+collector_log_file: <%= @collector_log_file %>
+<% end %>
+<% if @forwarder_log_file %>
+forwarder_log_file: <%= @forwarder_log_file %>
+<% end %>
+<% if @log_to_syslog %>
+# if syslog is enabled but a host and port are not set, a local domain socket
+# connection will be attempted
+log_to_syslog: <%= @log_to_syslog %>
+<% end %>
+<% if @syslog_host %>
+syslog_host: <%= @syslog_host %>
+<% end %>
+<% if @syslog_port %>
+syslog_port: <%= @syslog_port %>
+<% end %>
 <% if @tmp_directory %>
 tmp_directory: <%= @tmp_directory %>
 <% end %>
 <% if @pidfile_directory %>
 pidfile_directory: <%= @pidfile_directory %>
 <% end %>
-<% if @logging_level %>
-logging_level: <%= @logging_level %>
+<% if @listen_port %>
+listen_port: <%= @listen_port %>
 <% end %>
-
-# Optional status monitoring
-# See http://www.serverdensity.com/docs/agent/config/
-
-<% if @apache_status_url %>
-# Apache
-# See http://www.serverdensity.com/docs/agent/apache/
-apache_status_url: <%= @apache_status_url %>
-apache_status_user: <%= @apache_status_user %>
-apache_status_pass: <%= @apache_status_pass %>
-<% end %>
-
-<% if @mongodb_server %>
-# MongoDB
-# See http://www.serverdensity.com/docs/agent/mongodb/
-mongodb_server: <%= @mongodb_server %>
-mongodb_dbstats: <%= @mongodb_dbstats ? 'yes' : 'no' %>
-mongodb_replset: <%= @mongodb_replset ? 'yes' : 'no' %>
-<% end %>
-
-<% if @mysql_server %>
-# MySQL
-# See http://www.serverdensity.com/docs/agent/mysql/
-mysql_server: <%= @mysql_server %>
-mysql_user: <%= @mysql_user %>
-mysql_pass: <%= @mysql_pass %>
-<% end %>
-
-<% if @nginx_status_url %>
-# nginx
-# See http://www.serverdensity.com/docs/agent/nginx/
-nginx_status_url: <%= @nginx_status_url %>
-<% end %>
-
-<% if @rabbitmq_status_url %>
-# RabbitMQ
-# See http://www.serverdensity.com/docs/agent/rabbitmq/
-rabbitmq_status_url: <%= @rabbitmq_status_url %>
-rabbitmq_user: <%= @rabbitmq_user || 'guest' %>
-rabbitmq_pass: <%= @rabbitmq_pass || 'guest' %>
-<% end %>
-
-# Plugins
-# See http://www.serverdensity.com/docs/agent/writingplugins/
-plugin_directory: <%= @plugin_dir %>
-
-<% unless @plugin_options.nil? or @plugin_options.empty? %>
-<% @plugin_options.reject { |k, v| v.class == Hash } .each do |name, value| %>
-<%= name %> = <%= value %>
-<% end %>
-
-<% @plugin_options.select { |k, v| v.class == Hash } .each do |section, options| %>
-[<%= section %>]
-<% options.each do |name, value| %>
-<%= name %> = <%= value %>
-<% end; end; end %>
-
-# IMPORTANT:: MY SETTINGS ARE MISSING!
-# Some plugin settings may also be found in /etc/sd-agent/conf.d/

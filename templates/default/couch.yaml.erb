@@ -1,0 +1,37 @@
+init_config:
+
+instances:
+  # The `db_whitelist` should contain the names of the databases meant to be checked.
+  # If no whitelist is specified, all databases will be checked.
+  #
+  # The `db_blacklist` should contain the names of any databases meant to be excluded
+  # from being checked. If a database is listed in both the blacklist and whitelist,
+  # the blacklist will take precedence.
+  #
+  # You should also notice that no more than 50 databases will be checked, if you have
+  # whitelisted more than 50 or if you have more than 50 databases and no whitelist,
+  # only the first 50 databases will be checked.
+  #
+  - server: <%=  @couchdb_server -%> 
+
+<%- if @couchdb_user -%>   
+    user: <%=  @couchdb_user -%>              # optional
+<%- end -%> 
+<%- if @couchdb_password -%>     
+    password: <%=  @couchdb_password -%>             # optional
+<%- end -%> 
+<%- if @couchdb_timeout -%>      
+    timeout: <%=  @couchdb_timeout -%>                    # in seconds
+<%- end -%> 
+<%- if @couchdb_whitelist -%>  
+    db_whitelist:
+    <% @couchdb_whitelist.each  do |item| %>
+    <%= "- #{item}" %>
+    <%  end %>
+<%- end -%> 
+<%- if @couchdb_blacklist -%>      
+    db_blacklist:
+    <% @couchdb_blacklist.each  do |item| %>
+    <%= "- #{item}" %>
+    <%  end %>
+<%- end -%>     

@@ -1,0 +1,8 @@
+init_config:
+
+instances:
+  - nginx_status_url: <%= @nginx_status_url %>
+<%- if @nginx_ssl_validation -%>
+    ssl_validation: True
+<%- end -%>
+

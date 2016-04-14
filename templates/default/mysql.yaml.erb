@@ -1,0 +1,20 @@
+init_config:
+
+instances:
+  - server: <%= @mysql_server %>
+<%- if @mysql_user -%>
+    user: <%= @mysql_user %>
+<%- if @mysql_pass -%>
+    pass: <%= @mysql_pass %>
+<%- end -%>
+<%- end -%>
+<%- if @mysql_port -%>
+    port: <%= @mysql_port %>
+<%- end -%>
+<%- if @mysql_sock -%>
+    sock: <%= @mysql_sock %>
+<%- end -%>
+<%- if @mysql_defaults_file -%>
+    defaults_file: <%= @mysql_defaults_file %>
+<%- end -%>
+

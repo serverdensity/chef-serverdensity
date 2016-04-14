@@ -1,0 +1,22 @@
+init_config:
+
+instances:
+  - offset_threshold: <%=  @ntp_offset_threshold -%>
+
+    # Optional params:
+    #
+<%- if @ntp_host -%>   
+    host: <%=  @ntp_host -%>
+<%- end -%>
+
+<%- if @ntp_port -%>   
+    port: <%=  @ntp_port -%>
+<%- end -%>
+
+<%- if @ntp_version -%>   
+    version: <%=  @ntp_version -%>
+<%- end -%>  
+  
+<%- if @ntp_timeout -%>   
+    timeout: <%=  @ntp_timeout -%>
+<%- end -%>
