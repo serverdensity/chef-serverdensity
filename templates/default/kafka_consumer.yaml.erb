@@ -1,0 +1,22 @@
+init_config:
+#  Customize the ZooKeeper connection timeout here
+<%- if @kafka_c_zk_timeout -%>  
+  zk_timeout: <%=  @kafka_c_zk_timeout -%>
+<%- end -%> 
+
+#  Customize the Kafka connection timeout here
+<%- if @kafka_c_kafka_timeout -%>  
+  kafka_timeout: <%=  @kafka_c_kafka_timeout -%>
+<%- end -%> 
+
+instances:
+   - kafka_connect_str: <%=  @kafka_c_connect_str -%>
+
+     zk_connect_str: <%=  @kafka_c_zk_connect_str -%>
+
+     zk_prefix: <%=  @kafka_c_zk_connect_prefix  -%>
+
+     consumer_groups:
+       my_consumer:<%=  @kafka_c_my_consumer -%>
+
+         my_topic: <%=  @kafka_c_my_topic -%>

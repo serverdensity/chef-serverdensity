@@ -1,0 +1,26 @@
+init_config:
+
+instances:
+  - # Get metrics from your FPM pool with this URL
+    status_url: <%=  @phpfpm_status_url -%>
+    # Get a reliable service check of your FPM pool with that one
+    ping_url: <%=  @phpfpm_ping_url -%>
+    # Set the expected reply to the ping.
+    ping_reply: <%=  @phpfpm_ping_reply -%>
+    # These 2 URLs should follow the options from your FPM pool
+    # See http://php.net/manual/en/install.fpm.configuration.php
+    #   * pm.status_path
+    #   * ping.path
+    # You should configure your fastcgi passthru (nginx/apache) to
+    # catch these URLs and redirect them through the FPM pool target
+    # you want to monitor (FPM `listen` directive in the config, usually
+    # a UNIX socket or TCP socket.
+    #
+    # Use this if you have basic authentication on these pages
+<%- if @phpfpm_user -%>      
+    user: <%=  @phpfpm_user -%>
+<%- end -%>  
+  
+<%- if @phpfpm_password -%>      
+    password: <%=  @phpfpm_password -%>
+<%- end -%> 

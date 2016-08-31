@@ -1,0 +1,21 @@
+init_config:
+
+instances:
+  - host: <%=  @postgres_host -%>
+  
+    port: <%=  @postgres_port -%>
+<%- if @postgres_user -%>     
+    username: <%=  @postgres_user -%>
+<%- end -%>
+
+<%- if @postgres_password -%>      
+    password: <%=  @postgres_password -%>
+<%- end -%>  
+
+<%- if @postgres_dbname -%>  
+    dbname: <%=  @postgres_dbname -%>
+<%- end -%>    
+
+<%- if @postgres_ssl -%>  
+    ssl: <%=  @postgres_ssl -%>
+<%- end -%>      

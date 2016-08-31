@@ -1,0 +1,34 @@
+init_config:
+
+instances:
+  - host: <%=  @redis_host -%>
+  
+    port: <%=  @redis_port -%>
+
+<%- if @redis_sock -%> 
+    unix_socket_path: <%=  @redis_sock-%>
+<%- end -%> 
+    # Addional connection options
+    #
+<%- if @redis_db -%>     
+    db: <%=  @redis_db -%>
+<%- end -%>   
+
+<%- if @redis_password -%> 
+    password: <%=  @redis_password -%>
+<%- end -%>     
+
+<%- if @redis_socket_timeout -%> 
+    socket_timeout: <%=  @redis_socket_timeout -%>
+<%- end -%> 
+
+<%- if @redis_slowlog_max_len -%> 
+    # Max number of entries to fetch from the slow query log
+    # By default, the check will read this value from the redis config
+    # If it's above 128, it will default to 128 due to potential increased latency
+    # to retrieve more than 128 slowlog entries every 15 seconds
+    # If you need to get more entries from the slow query logs
+    # set the value here.
+    # Warning: It may impact the performance of your redis instance
+    slowlog-max-len: <%=  @redis_slowlog_max_len -%>
+<%- end -%> 

@@ -1,0 +1,44 @@
+init_config:
+
+instances:
+  # A 'rabbitmq_api_url' must be provided, pointing to the api url of the
+  # RabbitMQ Managment Plugin (http://www.rabbitmq.com/management.html)
+  # optional: 'rabbitmq_user' (default: guest) and 'rabbitmq_pass' (default: guest)
+  - rabbitmq_api_url: 
+    rabbitmq_user: <%=  @rabbitmq_user -%>
+    rabbitmq_pass: <%=  @rabbitmq_pass -%>
+    # If you have less than 3 nodes, you don't have to set the nodes parameters
+    # All nodes metrics will be collected
+    # If you have more than 3 nodes: you can set 3 node names. Metrics will be collected
+    # for these nodes. For the other nodes, aggregate will be calculated.
+    #
+    <%- if @rabbitmq_nodes -%>    
+    nodes:
+    <% @rabbitmq_nodes.each  do |item| %>
+      <%= "- #{item}" %>
+    <%  end %>
+    <%- end -%> 
+    <%- if @rabbitmq_nodes_regexes -%>    
+    nodes_regexes:
+    <% @rabbitmq_nodes_regexes.each  do |item| %>
+      <%= "- #{item}" %>
+    <%  end %>
+    <%- end -%> 
+    # If you have less than 5 queues, you don't have to set the queues parameters
+    # All queues metrics will be collected
+    # If you have more than 5 queues: you can set 5 queue names. Metrics will be collected
+    # for these queues. For the other queues, aggregate will be calculated.
+    # If you have set up vhosts, set the queue names as `vhost_name/queue_name`.
+    # Warning: aggregate are calculated on the 100 first queues/nodes.
+    <%- if @rabbitmq_queues -%>    
+    queues:
+    <% @rabbitmq_queues.each  do |item| %>
+      <%= "- #{item}" %>
+    <%  end %>
+    <%- end -%> 
+    <%- if @rabbitmq_queues_regexes -%>    
+    queues_regexes:
+    <% @rabbitmq_queues_regexes.each  do |item| %>
+      <%= "- #{item}" %>
+    <%  end %>
+    <%- end -%> 

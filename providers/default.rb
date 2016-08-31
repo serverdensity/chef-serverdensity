@@ -30,14 +30,6 @@ action :configure do
     @new_resource.settings
   )
 
-  if template.variables['sd_url'].nil?
-    if account
-      template.variables['sd_url'] = 'https://' + account
-    else
-      raise 'Unable to set sd_url, please supply an account'
-    end
-  end
-
   template.run_action :create
 
   link.to template.path
@@ -66,8 +58,6 @@ action :setup do
   api = case
     when token
       ServerDensity::API.configure 2.0, token
-    when account && username && password
-      ServerDensity::API.configure 1.4, account, username, password
   end
   @new_resource.updated_by_last_action !api.nil?
 end

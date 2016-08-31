@@ -1,0 +1,15 @@
+# Warning
+# The user running the Server Density Agent (usually "sd-agent") must be part of the "docker" group
+
+init_config:
+  # Change the root directory to look at to get cgroup statistics. Useful when running inside a
+  # container with host directories mounted on a different folder. Default: /.
+
+  docker_root: <%= @docker_root %>
+
+  # Timeout on Docker socket connection. You may have to increase it if you have many containers.
+  # socket_timeout: 5
+
+instances:
+    # URL of the Docker daemon socket to reach the Docker API. HTTP also works.
+  - url: "<%= @docker_url %>"

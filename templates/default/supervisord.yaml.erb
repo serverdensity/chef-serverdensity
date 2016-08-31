@@ -1,0 +1,49 @@
+#
+#   There are two ways to get started with the supervisord check.
+#
+#   You can configure inet_http_server in /etc/supervisord.conf. Below is an
+#   example inet_http_server configuration:
+#
+#       [inet_http_server]
+#       port:localhost:9001
+#       username:user  # optional
+#       password:pass  # optional
+#
+#   OR, you can use supervisorctl socket to communicate with supervisor.
+#   If supervisor is running as root, make sure chmod property is set
+#   to a permission accessible to non-root users. See the example below:
+#
+#       [supervisorctl]
+#       serverurl=unix:///var/run//supervisor.sock
+#
+#       [unix_http_server]
+#       file=/var/run/supervisor.sock
+#       chmod=777
+#
+#  Reload supervisor, specify the inet or unix socket server information
+#  in this yaml file along with an optional list of the processes you want
+#  to monitor per instance, and you're good to go!
+#
+#  See http://supervisord.org/configuration.html for more information on
+#  configuring supervisord sockets and inet http servers.
+#
+
+init_config:
+
+instances:
+   - name: <%=  @supervisord_name -%>    # Required. An arbitrary name to identify the supervisord server
+    <%- if @supervisord_host -%>     
+     host: <%=  @supervisord_host -%>  # Optional. Defaults to localhost. The host where supervisord server is running
+    <%- end -%> 
+    <%- if @supervisord_port -%>       
+     port: <%=  @supervisord_port -%>       # Optional. Defaults to 9001. The port number.
+    <%- end -%> 
+    <%- if @supervisord_user -%>       
+     user: <%=  @supervisord_user -%>       # Optional. Required only if a username is configured.
+    <%- end -%> 
+    <%- if @supervisord_pass -%>       
+     pass: <%=  @supervisord_pass -%>      # Optional. Required only if a password is configured.    
+    <%- end -%> 
+    <%- if @supervisord_socket -%>  
+     socket: <%=  @supervisord_socket -%>
+    <%- end -%>      

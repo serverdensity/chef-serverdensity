@@ -1,6 +1,10 @@
 ChangeLog for chef-serverdensity
 ================================
 
+3.0.0 (14-04-2016)
+------------------
+- Rewrote entire recipe to install the Server Density v2 agent. v1 agent support has been removed. 
+
 2.1.4 (26-03-2015)
 ------------------
 - Use 1.7.3 rest-client (fix for "Unable to acquire a ServerDensity agent_key")
