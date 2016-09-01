@@ -1,5 +1,8 @@
 ChangeLog for chef-serverdensity
 ================================
+3.0.1 (01-09-2016)
+------------------
+- Improved recipe to ensure that the sd-agent service is only restarted after a configuration change. 
 
 3.0.0 (14-04-2016)
 ------------------
