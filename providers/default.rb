@@ -26,7 +26,7 @@ action :configure do
   template.mode 00644
 
   template.variables Chef::Mixin::DeepMerge.merge(
-    node.serverdensity.to_hash,
+    node["serverdensity"]["to_hash"],
     @new_resource.settings
   )
 
@@ -72,7 +72,7 @@ action :sync do
 end
 
 action :update do
-  if node.serverdensity.enabled
+  if node["serverdensity"]["enabled"]
     action_setup
     action_configure
     action_enable
@@ -94,7 +94,7 @@ end
 
 def agent_key
   @agent_key ||= @new_resource.agent_key ||
-    node.serverdensity.agent_key ||
+    node["serverdensity"]["agent_key"] ||
     key_from_file ||
     key_from_ec2 ||
     key_from_api
@@ -155,17 +155,17 @@ end
 
 def metadata
   @metadata ||= {
-    group: node.serverdensity.device_group || 'chef-autodeploy',
-    hostname: node.hostname,
+    group: node["serverdensity"]["device_group"] || 'chef-autodeploy',
+    hostname: node["hostname"],
     name: @new_resource.name
   }.merge(provider).merge(@new_resource.metadata)
 end
 
 def provider
   @provider ||= case
-    when (node.ec2.instance_id rescue false)
+    when (node["ec2"]["instance_id"] rescue false)
       { provider: 'amazon', providerId: node.ec2.instance_id }
-    when (node.opsworks.instance.aws_instance_id rescue false)
+    when (node["opswork"]["instance"]["aws_instance_id"] rescue false)
       { provider: 'amazon', providerId: node.opsworks.instance.aws_instance_id }
     else
       {}
