@@ -101,15 +101,15 @@ def agent_key
 end
 
 def username
-  @new_resource.username || node.serverdensity.username
+  @new_resource.username || node["serverdensity"]["username"]
 end
 
 def password
-  @new_resource.password || node.serverdensity.password
+  @new_resource.password || node["serverdensity"]["password"]
 end
 
 def token
-  @new_resource.token || node.serverdensity.token
+  @new_resource.token || node["serverdensity"]["token"]
 end
 
 # methods
