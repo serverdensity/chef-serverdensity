@@ -15,7 +15,7 @@ chef_gem 'rest-client' do
     compile_time false if Chef::Resource::ChefGem.method_defined?(:compile_time)
 end
 
-case node[:platform]
+case node["platform"]
 
   when 'debian', 'ubuntu'
     include_recipe 'apt'
