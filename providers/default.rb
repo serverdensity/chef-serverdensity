@@ -26,7 +26,7 @@ action :configure do
   template.mode 00644
 
   template.variables Chef::Mixin::DeepMerge.merge(
-    node["serverdensity"]["to_hash"],
+    node["serverdensity"].to_hash,
     @new_resource.settings
   )
 
