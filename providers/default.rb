@@ -141,7 +141,7 @@ end
 
 def key_from_ec2
   if node.attribute?(:ec2)
-    validate node.ec2.userdata.split(':').last rescue nil
+    validate node["ec2"]["userdata"].split(':').last rescue nil
   end
 end
 
