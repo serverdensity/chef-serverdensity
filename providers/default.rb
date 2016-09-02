@@ -86,8 +86,8 @@ end
 
 def account
   @account ||= @new_resource.account ||
-    node.serverdensity.account ||
-    node.serverdensity.sd_url.sub(/^https?:\/\//, '')
+    node["serverdensity"]["account"] ||
+    node["serverdensity"]["sd_url"].sub(/^https?:\/\//, '')
 rescue
   nil
 end
