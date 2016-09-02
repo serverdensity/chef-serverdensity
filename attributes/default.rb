@@ -50,12 +50,12 @@ default['serverdensity']['couchdb_timeout'] = nil
 default['serverdensity']['couchdb_whitelist'] = nil
 default['serverdensity']['couchdb_blacklist'] = nil
 
-default['serverdensity']['directory'] = nil # Set this attribute to install the Directory plugin
+default['serverdensity']['directory'] = nil # Set this attribute to install the Directory plugin (Use an Array)
 
 default['serverdensity']['docker_root'] = nil # Set this attribute to install the Docker plugin
 default['serverdensity']['docker_url'] = nil
 
-default['serverdensity']['kafka_c_connect_str'] = nil
+default['serverdensity']['kafka_c_connect_str'] = nil # Set this attribute to install the Kafka Consumer plugin
 default['serverdensity']['kafka_c_zk_connect_str'] = nil 
 default['serverdensity']['kafka_c_zk_timeout'] = nil
 default['serverdensity']['kafka_c_kafka_timeout'] = nil
