@@ -91,6 +91,7 @@ if node['serverdensity']['consul_url']
         mode 0644
         variables(
                   :consul_url => node['serverdensity']['consul_url'],
+                  :consul_checks => node['serverdensity']['consul_checks'],
                   :consul_whitelist => node['serverdensity']['consul_whitelist'],
                   )
         notifies :reload, 'service[sd-agent]', :delayed
@@ -285,7 +286,7 @@ if node['serverdensity']['postfix_directory']
 end
 
 if node['serverdensity']['postgres_host']
-    package 'sd-agent-postgres'
+    package 'sd-agent-postgresql'
     template '/etc/sd-agent/conf.d/postgres.yaml' do
         source 'postgres.yaml.erb'
         owner 'sd-agent'
@@ -325,7 +326,7 @@ end
 
 if node['serverdensity']['redis_host']
     package 'sd-agent-redis'
-    template '/etc/sd-agent/conf.d/redis.yaml' do
+    template '/etc/sd-agent/conf.d/redisdb.yaml' do
         source 'redis.yaml.erb'
         owner 'sd-agent'
         group 'sd-agent'
