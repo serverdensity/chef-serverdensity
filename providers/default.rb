@@ -165,8 +165,8 @@ def provider
   @provider ||= case
     when (node["ec2"]["instance_id"] rescue false)
       { provider: 'amazon', providerId: node["ec2"]["instance_id"] }
-    when (node["opswork"]["instance"]["aws_instance_id"] rescue false)
-      { provider: 'amazon', providerId: node["opswork"]["instance"]["aws_instance_id"] }
+    when (node["opsworks"]["instance"]["aws_instance_id"] rescue false)
+      { provider: 'amazon', providerId: node["opsworks"]["instance"]["aws_instance_id"] }
     else
       {}
   end
