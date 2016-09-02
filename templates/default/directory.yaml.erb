@@ -19,22 +19,10 @@ instances:
   # "recursive" - boolean, when true the stats will recurse into directories. default False
 <%- if @directory -%>  
     <% @directory.each  do |item| %>
-  - directory: "<%= "#{item}" %>"
+  - directory: "<%= item %>"
     # name: "tag_value"
     # filegauges: False
     # pattern: "*.log"
     # recursive: True
-    <%  end %>
-<%- end -%> 
-
-<%- if @directory -%>  
-    <% @directory.each  do |item| %>
-    <% @item.each  do |dir| %>
-  - directory: "<%= "#{dir}" %>"
-    name: "<%= "#{dir}" %>"
-    filegauges: <%= "#{dir}" %>
-    pattern: "<%= "#{dir}" %>""
-    recursive: <%= "#{dir}" %>
-    <%  end %>
     <%  end %>
 <%- end -%> 
