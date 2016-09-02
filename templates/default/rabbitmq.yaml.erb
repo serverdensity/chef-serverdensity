@@ -4,15 +4,15 @@ instances:
   # A 'rabbitmq_api_url' must be provided, pointing to the api url of the
   # RabbitMQ Managment Plugin (http://www.rabbitmq.com/management.html)
   # optional: 'rabbitmq_user' (default: guest) and 'rabbitmq_pass' (default: guest)
-  - rabbitmq_api_url: <%=  @rabbitmq_api_url -%>
-    rabbitmq_user: <%=  @rabbitmq_user -%>
-    rabbitmq_pass: <%=  @rabbitmq_pass -%>
+  - rabbitmq_api_url: <%=  @rabbitmq_api_url %>
+    rabbitmq_user: <%=  @rabbitmq_user %>
+    rabbitmq_pass: <%=  @rabbitmq_pass %>
     # If you have less than 3 nodes, you don't have to set the nodes parameters
     # All nodes metrics will be collected
     # If you have more than 3 nodes: you can set 3 node names. Metrics will be collected
     # for these nodes. For the other nodes, aggregate will be calculated.
     #
-    <%- if @rabbitmq_nodes -%>    
+    <%- if @rabbitmq_nodes -%>
     nodes:
     <% @rabbitmq_nodes.each  do |item| %>
       <%= "- #{item}" %>
