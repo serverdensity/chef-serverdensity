@@ -41,16 +41,17 @@ default['serverdensity']['apache_status_pass'] = nil
 default['serverdensity']['btrfs_excludes'] = nil # Set this attribute to install the BTRFS plugin
 
 default['serverdensity']['consul_url'] = nil # Set this attribute to install the Consul plugin
-default['serverdensity']['consul_whitelist'] = nil
+default['serverdensity']['consul_checks'] = nil
+default['serverdensity']['consul_whitelist'] = [nil]  # Use an array
 
 default['serverdensity']['couchdb_server'] = nil # Set this attribute to install the CouchDB plugin
 default['serverdensity']['couchdb_user'] = nil
 default['serverdensity']['couchdb_password'] = nil
 default['serverdensity']['couchdb_timeout'] = nil
-default['serverdensity']['couchdb_whitelist'] = nil
-default['serverdensity']['couchdb_blacklist'] = nil
+default['serverdensity']['couchdb_whitelist'] = [nil] # Use an array 
+default['serverdensity']['couchdb_blacklist'] = [nil] # Use an array 
 
-default['serverdensity']['directory'] = nil # Set this attribute to install the Directory plugin (Use an Array)
+default['serverdensity']['directory'] = [nil] # Set this attribute to install the Directory plugin (Use an Array)
 
 default['serverdensity']['docker_root'] = nil # Set this attribute to install the Docker plugin
 default['serverdensity']['docker_url'] = nil
@@ -95,7 +96,7 @@ default['serverdensity']['phpfpm_user'] = nil
 default['serverdensity']['phpfpm_password'] = nil
 
 default['serverdensity']['postfix_directory'] = nil # Set this attribute to install the Postfix plugin
-default['serverdensity']['postfix_queues'] = nil
+default['serverdensity']['postfix_queues'] = [nil] # Use an array 
 
 default['serverdensity']['postgres_host'] = nil # Set this attribute to install the Postgres plugin
 default['serverdensity']['postgres_port'] = nil
