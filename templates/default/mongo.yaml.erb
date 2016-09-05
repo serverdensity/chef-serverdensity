@@ -2,6 +2,9 @@ init_config:
 
 instances:
   - server: <%= @mongo_url %>
+<%- if @mongo_timeout -%>
+    timeout: <%= @mongo_timeout %>
+<%- end -%>  
 <%- if @mongo_ssl -%>
     ssl: <%= @mongo_ssl %>
 <%- if @mongo_ssl_keyfile -%>

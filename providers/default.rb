@@ -7,7 +7,7 @@ def whyrun_supported?
 end
 
 # actions
-
+use_inline_resources
 action :clear do
   converge_by 'delete all existing Server Density alerts for device' do
     @new_resource.updated_by_last_action device.reset
@@ -26,7 +26,7 @@ action :configure do
   template.mode 00644
 
   template.variables Chef::Mixin::DeepMerge.merge(
-    node.serverdensity.to_hash,
+    node["serverdensity"].to_hash,
     @new_resource.settings
   )
 
@@ -72,7 +72,7 @@ action :sync do
 end
 
 action :update do
-  if node.serverdensity.enabled
+  if node["serverdensity"]["enabled"]
     action_setup
     action_configure
     action_enable
@@ -86,30 +86,30 @@ end
 
 def account
   @account ||= @new_resource.account ||
-    node.serverdensity.account ||
-    node.serverdensity.sd_url.sub(/^https?:\/\//, '')
+    node["serverdensity"]["account"] ||
+    node["serverdensity"]["sd_url"].sub(/^https?:\/\//, '')
 rescue
   nil
 end
 
 def agent_key
   @agent_key ||= @new_resource.agent_key ||
-    node.serverdensity.agent_key ||
+    node["serverdensity"]["agent_key"] ||
     key_from_file ||
     key_from_ec2 ||
     key_from_api
 end
 
 def username
-  @new_resource.username || node.serverdensity.username
+  @new_resource.username || node["serverdensity"]["username"]
 end
 
 def password
-  @new_resource.password || node.serverdensity.password
+  @new_resource.password || node["serverdensity"]["password"]
 end
 
 def token
-  @new_resource.token || node.serverdensity.token
+  @new_resource.token || node["serverdensity"]["token"]
 end
 
 # methods
@@ -141,7 +141,7 @@ end
 
 def key_from_ec2
   if node.attribute?(:ec2)
-    validate node.ec2.userdata.split(':').last rescue nil
+    validate node["ec2"]["userdata"].split(':').last rescue nil
   end
 end
 
@@ -155,18 +155,18 @@ end
 
 def metadata
   @metadata ||= {
-    group: node.serverdensity.device_group || 'chef-autodeploy',
-    hostname: node.hostname,
+    group: node["serverdensity"]["device_group"] || 'chef-autodeploy',
+    hostname: node["hostname"],
     name: @new_resource.name
   }.merge(provider).merge(@new_resource.metadata)
 end
 
 def provider
   @provider ||= case
-    when (node.ec2.instance_id rescue false)
-      { provider: 'amazon', providerId: node.ec2.instance_id }
-    when (node.opsworks.instance.aws_instance_id rescue false)
-      { provider: 'amazon', providerId: node.opsworks.instance.aws_instance_id }
+    when (node["ec2"]["instance_id"] rescue false)
+      { provider: 'amazon', providerId: node["ec2"]["instance_id"] }
+    when (node["opsworks"]["instance"]["aws_instance_id"] rescue false)
+      { provider: 'amazon', providerId: node["opsworks"]["instance"]["aws_instance_id"] }
     else
       {}
   end
