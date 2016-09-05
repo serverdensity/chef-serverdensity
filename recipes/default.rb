@@ -64,7 +64,7 @@ if node['serverdensity']['apache_status_url']
                   :apache_user => node['serverdensity']['apache_status_user'],
                   :apache_pass => node['serverdensity']['apache_status_pass']
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -78,7 +78,7 @@ if node['serverdensity']['btrfs_excludes']
         variables(
                   :btrfs_excludes => node['serverdensity']['btrfs_excludes'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -94,7 +94,7 @@ if node['serverdensity']['consul_url']
                   :consul_checks => node['serverdensity']['consul_checks'],
                   :consul_whitelist => node['serverdensity']['consul_whitelist'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -113,7 +113,7 @@ if node['serverdensity']['couchdb_server']
                   :couchdb_whitelist => node['serverdensity']['couchdb_whitelist'],
                   :couchdb_blacklist => node['serverdensity']['couchdb_blacklist'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -127,7 +127,7 @@ if node['serverdensity']['directory']
         variables(
                   :directory => node['serverdensity']['directory'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -142,7 +142,7 @@ if node['serverdensity']['docker_root']
                   :docker_root => node['serverdensity']['docker_root'],
                   :docker_url => node['serverdensity']['docker_url'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -162,7 +162,7 @@ if node['serverdensity']['kafka_c_connect_str']
                   :kafka_c_my_consumer => node['serverdensity']['kafka_c_my_consumer'],
                   :kafka_c_my_topic => node['serverdensity']['kafka_c_my_topic'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -176,7 +176,7 @@ if node['serverdensity']['memcache_url']
         variables(
                   :memcache_url => node['serverdensity']['memcache_url'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -196,7 +196,7 @@ if node['serverdensity']['mongo_url']
                   :mongo_ssl_cert_reqs => node['serverdensity']['mongo_ssl_cert_reqs'],
                   :mongo_ssl_ca_certs => node['serverdensity']['mongo_ssl_ca_certs'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -215,7 +215,7 @@ if node['serverdensity']['mysql_server']
                   :mysql_sock => node['serverdensity']['mysql_sock'],
                   :mysql_defaults_file => node['serverdensity']['mysql_defaults_file'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -230,7 +230,7 @@ if node['serverdensity']['nginx_status_url']
                   :nginx_status_url => node['serverdensity']['nginx_status_url'],
                   :nginx_ssl_validation => node['serverdensity']['nginx_ssl_validation'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -248,7 +248,7 @@ if node['serverdensity']['ntp_offset_threshold']
                   :ntp_version => node['serverdensity']['ntp_version'],
                   :ntp_timeout => node['serverdensity']['ntp_timeout'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -266,7 +266,7 @@ if node['serverdensity']['phpfpm_status_url']
                   :phpfpm_user  => node['serverdensity']['phpfpm_user'],
                   :phpfpm_password => node['serverdensity']['phpfpm_password'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -281,7 +281,7 @@ if node['serverdensity']['postfix_directory']
                   :postfix_directory => node['serverdensity']['postfix_directory'],
                   :postfix_queues => node['serverdensity']['postfix_queues'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -300,7 +300,7 @@ if node['serverdensity']['postgres_host']
                   :postgres_dbname => node['serverdensity']['postgres_dbname'],
                   :postgres_ssl => node['serverdensity']['postgres_ssl'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -320,7 +320,7 @@ if node['serverdensity']['rabbitmq_api_url']
                   :rabbitmq_queues => node['serverdensity']['rabbitmq_queues'],
                   :rabbitmq_queues_regexes => node['serverdensity']['rabbitmq_queues_regexes'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -339,7 +339,7 @@ if node['serverdensity']['redis_host']
                   :redis_socket_timeout => node['serverdensity']['redis_socket_timeout'],
                   :redis_slowlog_max_len => node['serverdensity']['redis_slowlog_max_len'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -353,7 +353,7 @@ if node['serverdensity']['riak_url']
         variables(
                   :riak_url=> node['serverdensity']['riak_url'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -372,7 +372,7 @@ if node['serverdensity']['supervisord_name']
                   :supervisord_pass => node['serverdensity']['supervisord_pass'],
                   :supervisord_socket => node['serverdensity']['supervisord_scoket'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
@@ -387,6 +387,6 @@ if node['serverdensity']['varnishstat_path']
                   :varnishstat_path=> node['serverdensity']['varnishstat_path'],
                   :varnishstat_name=> node['serverdensity']['varnishstat_name'],
                   )
-        notifies :reload, 'service[sd-agent]', :delayed
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
