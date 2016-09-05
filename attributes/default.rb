@@ -108,10 +108,10 @@ default['serverdensity']['postgres_ssl'] = nil
 default['serverdensity']['rabbitmq_api_url'] = nil # Set this attribute to install the RabbitMQ plugin
 default['serverdensity']['rabbitmq_user'] = nil
 default['serverdensity']['rabbitmq_pass'] = nil
-default['serverdensity']['rabbitmq_nodes'] = nil
-default['serverdensity']['rabbitmq_nodes_regexes'] = nil
-default['serverdensity']['rabbitmq_queues'] = nil
-default['serverdensity']['rabbitmq_queues_regexes'] = nil
+default['serverdensity']['rabbitmq_nodes'] = [nil] # Use an array
+default['serverdensity']['rabbitmq_nodes_regexes'] = [nil] # Use an array 
+default['serverdensity']['rabbitmq_queues'] = [nil] # Use an array 
+default['serverdensity']['rabbitmq_queues_regexes'] = [nil] # Use an array
 
 default['serverdensity']['redis_host'] = nil # Set this attribute to install the Redis plugin
 default['serverdensity']['redis_port'] = nil
