@@ -100,7 +100,7 @@ default['serverdensity']['phpfpm_user'] = nil
 default['serverdensity']['phpfpm_password'] = nil
 
 default['serverdensity']['postfix_directory'] = nil # Set this attribute to install the Postfix plugin
-default['serverdensity']['postfix_queues'] = [] # Use an array 
+default['serverdensity']['postfix_queues'] = ["incoming","deferred","active"] # Use an array 
 
 default['serverdensity']['postgres_host'] = nil # Set this attribute to install the Postgres plugin
 default['serverdensity']['postgres_port'] = nil
