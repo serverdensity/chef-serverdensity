@@ -1,0 +1,10 @@
+init_config:
+
+instances:
+  - url: <%= @haproxy_url %>
+<% if @haproxy_username %>  
+    username: <%= @haproxy_username %>
+<% end %>
+<% if @haproxy_password %>    
+    password: <%= @haproxy_password %>
+<% end %>
