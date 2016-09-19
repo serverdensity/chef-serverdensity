@@ -1,5 +1,11 @@
 ChangeLog for chef-serverdensity
 ================================
+3.0.2 (01-09-2016)
+------------------
+- Added HAProxy support 
+- Improved handling of attributes which use arrays.
+
+
 3.0.1 (01-09-2016)
 ------------------
 - Improved recipe to ensure that the sd-agent service is only restarted after a configuration change. 
