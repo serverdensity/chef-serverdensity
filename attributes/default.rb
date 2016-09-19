@@ -56,6 +56,10 @@ default['serverdensity']['directory'] = [] # Set this attribute to install the D
 default['serverdensity']['docker_root'] = nil # Set this attribute to install the Docker plugin
 default['serverdensity']['docker_url'] = nil
 
+default['serverdensity']['haproxy_url'] = nil # Set this attribute to install the HAProxy Plugin
+default['serverdensity']['haproxy_username'] = nil
+default['serverdensity']['haproxy_password'] = nil
+
 default['serverdensity']['kafka_c_connect_str'] = nil # Set this attribute to install the Kafka Consumer plugin
 default['serverdensity']['kafka_c_zk_connect_str'] = nil 
 default['serverdensity']['kafka_c_zk_timeout'] = nil
