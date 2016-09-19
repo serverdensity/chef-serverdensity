@@ -12,13 +12,13 @@ instances:
     # If you have more than 3 nodes: you can set 3 node names. Metrics will be collected
     # for these nodes. For the other nodes, aggregate will be calculated.
     #
-    <%- if @rabbitmq_nodes -%>
+    <%- if !@rabbitmq_nodes.empty? -%>
     nodes:
     <% @rabbitmq_nodes.each  do |item| %>
       <%= "- #{item}" %>
     <%  end %>
     <%- end -%> 
-    <%- if @rabbitmq_nodes_regexes -%>    
+    <%- if !@rabbitmq_nodes_regexes.empty? -%>    
     nodes_regexes:
     <% @rabbitmq_nodes_regexes.each  do |item| %>
       <%= "- #{item}" %>
@@ -30,13 +30,13 @@ instances:
     # for these queues. For the other queues, aggregate will be calculated.
     # If you have set up vhosts, set the queue names as `vhost_name/queue_name`.
     # Warning: aggregate are calculated on the 100 first queues/nodes.
-    <%- if @rabbitmq_queues -%>    
+    <%- if !@rabbitmq_queues.empty? -%>    
     queues:
     <% @rabbitmq_queues.each  do |item| %>
       <%= "- #{item}" %>
     <%  end %>
     <%- end -%> 
-    <%- if @rabbitmq_queues_regexes -%>    
+    <%- if !@rabbitmq_queues_regexes.empty? -%>    
     queues_regexes:
     <% @rabbitmq_queues_regexes.each  do |item| %>
       <%= "- #{item}" %>

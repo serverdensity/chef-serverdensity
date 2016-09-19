@@ -23,13 +23,13 @@ instances:
 <%- if @couchdb_timeout -%>      
     timeout: <%=  @couchdb_timeout -%>                    # in seconds
 <%- end -%> 
-<%- if @couchdb_whitelist -%>  
+<%- if !@couchdb_whitelist.empty? -%>  
     db_whitelist:
     <% @couchdb_whitelist.each  do |item| %>
     <%= "- #{item}" %>
     <%  end %>
 <%- end -%> 
-<%- if @couchdb_blacklist -%>      
+<%- if !@couchdb_blacklist.empty? -%>      
     db_blacklist:
     <% @couchdb_blacklist.each  do |item| %>
     <%= "- #{item}" %>

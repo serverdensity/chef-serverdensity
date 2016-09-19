@@ -8,7 +8,7 @@ instances:
       # Whether to perform checks against the Consul service Catalog
       catalog_checks: <%=  @consul_checks %>
 
-<%- if @consul_whitelist -%> 
+<%- if !@consul_whitelist.empty? -%> 
       # Services to restrict catalog querying to
       # The default settings query up to 50 services. So if you have more than
       # this many in your Consul service catalog, you will want to fill in the
