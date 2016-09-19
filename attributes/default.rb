@@ -30,7 +30,7 @@ default['serverdensity']['log_to_syslog'] = 'yes'
 default['serverdensity']['syslog_host'] = nil
 default['serverdensity']['syslog_port'] = nil
 
-default['serverdensity']['listen_port'] = '17123'
+default['serverdensity']['listen_port'] = '17124'
 
 default['serverdensity']['device_group'] = nil
 
@@ -42,16 +42,16 @@ default['serverdensity']['btrfs_excludes'] = nil # Set this attribute to install
 
 default['serverdensity']['consul_url'] = nil # Set this attribute to install the Consul plugin
 default['serverdensity']['consul_checks'] = nil
-default['serverdensity']['consul_whitelist'] = [nil]  # Use an array
+default['serverdensity']['consul_whitelist'] = []  # Use an array
 
 default['serverdensity']['couchdb_server'] = nil # Set this attribute to install the CouchDB plugin
 default['serverdensity']['couchdb_user'] = nil
 default['serverdensity']['couchdb_password'] = nil
 default['serverdensity']['couchdb_timeout'] = nil
-default['serverdensity']['couchdb_whitelist'] = [nil] # Use an array 
-default['serverdensity']['couchdb_blacklist'] = [nil] # Use an array 
+default['serverdensity']['couchdb_whitelist'] = [] # Use an array 
+default['serverdensity']['couchdb_blacklist'] = [] # Use an array 
 
-default['serverdensity']['directory'] = [nil] # Set this attribute to install the Directory plugin (Use an Array)
+default['serverdensity']['directory'] = [] # Set this attribute to install the Directory plugin (Use an Array)
 
 default['serverdensity']['docker_root'] = nil # Set this attribute to install the Docker plugin
 default['serverdensity']['docker_url'] = nil
@@ -96,7 +96,7 @@ default['serverdensity']['phpfpm_user'] = nil
 default['serverdensity']['phpfpm_password'] = nil
 
 default['serverdensity']['postfix_directory'] = nil # Set this attribute to install the Postfix plugin
-default['serverdensity']['postfix_queues'] = [nil] # Use an array 
+default['serverdensity']['postfix_queues'] = [] # Use an array 
 
 default['serverdensity']['postgres_host'] = nil # Set this attribute to install the Postgres plugin
 default['serverdensity']['postgres_port'] = nil
@@ -108,10 +108,10 @@ default['serverdensity']['postgres_ssl'] = nil
 default['serverdensity']['rabbitmq_api_url'] = nil # Set this attribute to install the RabbitMQ plugin
 default['serverdensity']['rabbitmq_user'] = nil
 default['serverdensity']['rabbitmq_pass'] = nil
-default['serverdensity']['rabbitmq_nodes'] = [nil] # Use an array
-default['serverdensity']['rabbitmq_nodes_regexes'] = [nil] # Use an array 
-default['serverdensity']['rabbitmq_queues'] = [nil] # Use an array 
-default['serverdensity']['rabbitmq_queues_regexes'] = [nil] # Use an array
+default['serverdensity']['rabbitmq_nodes'] = [] # Use an array
+default['serverdensity']['rabbitmq_nodes_regexes'] = [] # Use an array 
+default['serverdensity']['rabbitmq_queues'] = [] # Use an array 
+default['serverdensity']['rabbitmq_queues_regexes'] = [] # Use an array
 
 default['serverdensity']['redis_host'] = nil # Set this attribute to install the Redis plugin
 default['serverdensity']['redis_port'] = nil
