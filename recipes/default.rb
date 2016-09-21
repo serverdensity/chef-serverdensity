@@ -146,6 +146,22 @@ if node['serverdensity']['docker_root']
     end
 end
 
+if node['serverdensity']['haproxy_url']
+    package 'sd-agent-haproxy'
+    template '/etc/sd-agent/conf.d/haproxy.yaml' do
+        source 'haproxy.yaml.erb'
+        owner 'sd-agent'
+        group 'sd-agent'
+        mode 0644
+        variables(
+                  :haproxy_url => node['serverdensity']['haproxy_url'],
+                  :haproxy_username => node['serverdensity']['haproxy_username'],
+                  :haproxy_password => node['serverdensity']['haproxy_password'],
+                  )
+        notifies :restart, 'service[sd-agent]', :delayed
+    end
+end
+
 if node['serverdensity']['kafka_c_connect_str']
     package 'sd-agent-kafka-consumer'
     template '/etc/sd-agent/conf.d/kafka_consumer.yaml' do

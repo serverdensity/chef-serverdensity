@@ -11,8 +11,8 @@ init_config:
 
 instances:
   - directory: <%=  @postfix_directory -%>
-<%- if @postfix_queues -%>  
-    
+<%- if !@postfix_queues.empty? -%>  
+
     queues:
     <% @postfix_queues.each  do |item| %>
      <%= "- #{item}" %>

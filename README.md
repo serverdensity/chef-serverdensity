@@ -8,6 +8,7 @@ This cookbook installs the v2 [Server Density](http://www.serverdensity.com/) ag
 * sd-agent-couchdb
 * sd-agent-directory
 * sd-agent-docker
+* sd-agent-haproxy
 * sd-agent-kafka-consumer
 * sd-agent-memcache
 * sd-agent-mongo
@@ -68,7 +69,7 @@ You can either specify your account and token in `attributes/default.rb` or you 
   "run_list": [ "recipe[serverdensity]" ]
 }
 ```
-You can also include any of the attributes from `attributes/default.rb` in your run list to install and configure plugins. Plugin installtion is decided by the presence of the first attribute in the list for the specifc plugin:
+You can also include any of the attributes from `attributes/default.rb` in your run list to install and configure plugins. Plugin installation is decided by the presence of the first attribute in the list for the specific plugin:
 ```json
 {
   "name":"my_node",
