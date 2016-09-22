@@ -117,7 +117,7 @@ if node['serverdensity']['couchdb_server']
     end
 end
 
-if node['serverdensity']['directory']
+if !node['serverdensity']['directory'].empty?
     package 'sd-agent-directory'
     template '/etc/sd-agent/conf.d/directory.yaml' do
         source 'directory.yaml.erb'
