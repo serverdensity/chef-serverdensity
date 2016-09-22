@@ -1,6 +1,10 @@
 ChangeLog for chef-serverdensity
 ================================
-3.0.2 (01-09-2016)
+3.0.3 (22-09-2016)
+------------------
+- Fix to prevent empty array from installing the sd-agent-directory plugin
+
+3.0.2 (19-09-2016)
 ------------------
 - Added HAProxy support 
 - Improved handling of attributes which use arrays.
