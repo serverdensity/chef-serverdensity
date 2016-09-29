@@ -146,6 +146,29 @@ if node['serverdensity']['docker_root']
     end
 end
 
+if node['serverdensity']['elastic_url']
+    package 'sd-agent-elastic'
+    template '/etc/sd-agent/conf.d/elastic.yaml' do
+        source 'elastic.yaml.erb'
+        owner 'sd-agent'
+        group 'sd-agent'
+        mode 0644
+        variables(
+                  :elastic_url => node['serverdensity']['elastic_url'],
+                  :elastic_username => node['serverdensity']['elastic_username'], 
+                  :elastic_password => node['serverdensity']['elastic_password'],
+                  :elastic_cluster_stats => node['serverdensity']['elastic_cluster_stats'],
+                  :elastic_pshard_stats => node['serverdensity']['elastic_pshard_stats'],
+                  :elastic_pending_task_stats => node['serverdensity']['elastic_pending_task_stats'],
+                  :elastic_ssl_verify => node['serverdensity']['elastic_ssl_verify'],
+                  :elastic_ssl_cert => node['serverdensity']['elastic_ssl_cert'],
+                  :elastic_ssl_key => node['serverdensity']['elastic_ssl_key'], 
+                  )
+        notifies :restart, 'service[sd-agent]', :delayed
+    end
+end
+
+
 if node['serverdensity']['haproxy_url']
     package 'sd-agent-haproxy'
     template '/etc/sd-agent/conf.d/haproxy.yaml' do

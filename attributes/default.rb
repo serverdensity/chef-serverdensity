@@ -56,6 +56,16 @@ default['serverdensity']['directory'] = [] # Set this attribute to install the D
 default['serverdensity']['docker_root'] = nil # Set this attribute to install the Docker plugin
 default['serverdensity']['docker_url'] = nil
 
+default['serverdensity']['elastic_url'] = nil # Set this attribute to install the Elasticsearch plugin
+default['serverdensity']['elastic_username'] = nil
+default['serverdensity']['elastic_password'] = nil
+default['serverdensity']['elastic_cluster_stats'] = nil
+default['serverdensity']['elastic_pshard_stats'] = nil
+default['serverdensity']['elastic_pending_task_stats'] = nil
+default['serverdensity']['elastic_ssl_verify'] = nil
+default['serverdensity']['elastic_ssl_cert'] = nil
+default['serverdensity']['elastic_ssl_key'] = nil
+
 default['serverdensity']['haproxy_url'] = nil # Set this attribute to install the HAProxy Plugin
 default['serverdensity']['haproxy_username'] = nil
 default['serverdensity']['haproxy_password'] = nil
