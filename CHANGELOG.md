@@ -1,5 +1,9 @@
 ChangeLog for chef-serverdensity
 ================================
+3.0.4 (29-09-2016)
+------------------
+- Added Elasticsearch support 
+
 3.0.3 (22-09-2016)
 ------------------
 - Fix to prevent empty array from installing the sd-agent-directory plugin
@@ -8,7 +12,6 @@ ChangeLog for chef-serverdensity
 ------------------
 - Added HAProxy support 
 - Improved handling of attributes which use arrays.
-
 
 3.0.1 (01-09-2016)
 ------------------
@@ -57,11 +60,9 @@ ChangeLog for chef-serverdensity
 
 1.0.1 (17-09-2013)
 ------------------
-
  - Fixed bug in switching between API versions which may have caused the agent
    to not be installed and strange output in logs.
 
 1.0.0 (26-07-2013)
 ------------------
-
  - Initial release with v1 and v2 API support.
