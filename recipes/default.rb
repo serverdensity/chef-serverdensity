@@ -162,7 +162,8 @@ if node['serverdensity']['elastic_url']
                   :elastic_pending_task_stats => node['serverdensity']['elastic_pending_task_stats'],
                   :elastic_ssl_verify => node['serverdensity']['elastic_ssl_verify'],
                   :elastic_ssl_cert => node['serverdensity']['elastic_ssl_cert'],
-                  :elastic_ssl_key => node['serverdensity']['elastic_ssl_key'], 
+                  :elastic_ssl_key => node['serverdensity']['elastic_ssl_key'],
+                  :elastic_timeout => node['serverdensity']['elastic_timeout'], 
                   )
         notifies :restart, 'service[sd-agent]', :delayed
     end

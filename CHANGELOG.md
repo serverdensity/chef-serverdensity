@@ -1,5 +1,9 @@
 ChangeLog for chef-serverdensity
 ================================
+3.0.5 (04-10-2016)
+------------------
+- Added `timeout` option for Elasticsearch plugin 
+
 3.0.4 (29-09-2016)
 ------------------
 - Added Elasticsearch support 

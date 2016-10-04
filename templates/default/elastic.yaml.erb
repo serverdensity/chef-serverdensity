@@ -46,4 +46,7 @@ instances:
     ssl_verify: <%= @elastic_ssl_verify %>
     ssl_cert: <%= @elastic_ssl_cert %>
     ssl_key: <%= @elastic_ssl_key %>
+<% end %>
+<% if @elastic_timeout %>   
+    timeout: <%= @elastic_timeout %>
 <% end %> 

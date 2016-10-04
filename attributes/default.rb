@@ -65,6 +65,7 @@ default['serverdensity']['elastic_pending_task_stats'] = nil
 default['serverdensity']['elastic_ssl_verify'] = nil
 default['serverdensity']['elastic_ssl_cert'] = nil
 default['serverdensity']['elastic_ssl_key'] = nil
+default['serverdensity']['elastic_timeout'] = nil
 
 default['serverdensity']['haproxy_url'] = nil # Set this attribute to install the HAProxy Plugin
 default['serverdensity']['haproxy_username'] = nil
