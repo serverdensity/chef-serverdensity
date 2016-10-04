@@ -8,6 +8,7 @@ This cookbook installs the v2 [Server Density](http://www.serverdensity.com/) ag
 * sd-agent-couchdb
 * sd-agent-directory
 * sd-agent-docker
+* sd-agent-elastic 
 * sd-agent-haproxy
 * sd-agent-kafka-consumer
 * sd-agent-memcache
