@@ -198,17 +198,19 @@ if node['serverdensity']['hdfs_datanode_jmx_uri']
                   )
         notifies :restart, 'service[sd-agent]', :delayed
     end
-    if node['serverdensity']['hdfs_namenode_jmx_uri']
-      template '/etc/sd-agent/conf.d/hdfs_namenode.yaml' do
-          source 'hdfs_namenode.yaml.erb'
-          owner 'sd-agent'
-          group 'sd-agent'
-          mode 0644
-          variables(
-                    :hdfs_namenode_jmx_uri => node['serverdensity']['hdfs_namenode_jmx_uri'],
-                    )
-          notifies :restart, 'service[sd-agent]', :delayed
-      end
+end
+
+if node['serverdensity']['hdfs_namenode_jmx_uri']
+    package 'sd-agent-hdfs'
+    template '/etc/sd-agent/conf.d/hdfs_namenode.yaml' do
+        source 'hdfs_namenode.yaml.erb'
+        owner 'sd-agent'
+        group 'sd-agent'
+        mode 0644
+        variables(
+                  :hdfs_namenode_jmx_uri => node['serverdensity']['hdfs_namenode_jmx_uri'],
+                  )
+        notifies :restart, 'service[sd-agent]', :delayed
     end
 end
 
