@@ -155,7 +155,7 @@ if node['serverdensity']['elastic_url']
         mode 0644
         variables(
                   :elastic_url => node['serverdensity']['elastic_url'],
-                  :elastic_username => node['serverdensity']['elastic_username'],
+                  :elastic_username => node['serverdensity']['elastic_username'], 
                   :elastic_password => node['serverdensity']['elastic_password'],
                   :elastic_cluster_stats => node['serverdensity']['elastic_cluster_stats'],
                   :elastic_pshard_stats => node['serverdensity']['elastic_pshard_stats'],
@@ -163,7 +163,7 @@ if node['serverdensity']['elastic_url']
                   :elastic_ssl_verify => node['serverdensity']['elastic_ssl_verify'],
                   :elastic_ssl_cert => node['serverdensity']['elastic_ssl_cert'],
                   :elastic_ssl_key => node['serverdensity']['elastic_ssl_key'],
-                  :elastic_timeout => node['serverdensity']['elastic_timeout'],
+                  :elastic_timeout => node['serverdensity']['elastic_timeout'], 
                   )
         notifies :restart, 'service[sd-agent]', :delayed
     end
@@ -181,30 +181,6 @@ if node['serverdensity']['haproxy_url']
                   :haproxy_url => node['serverdensity']['haproxy_url'],
                   :haproxy_username => node['serverdensity']['haproxy_username'],
                   :haproxy_password => node['serverdensity']['haproxy_password'],
-                  )
-        notifies :restart, 'service[sd-agent]', :delayed
-    end
-end
-
-if node['serverdensity']['haproxy_url']
-    package 'sd-agent-haproxy'
-    template '/etc/sd-agent/conf.d/hdfs_datanode.yaml' do
-        source 'hdfs_datanode.yaml.erb'
-        owner 'sd-agent'
-        group 'sd-agent'
-        mode 0644
-        variables(
-                  :hdfs_datanode_jmx_uri => node['serverdensity']['hdfs_datanode_jmx_uri'],
-                  )
-        notifies :restart, 'service[sd-agent]', :delayed
-    end
-    template '/etc/sd-agent/conf.d/hdfs_namenode.yaml' do
-        source 'hdfs_namenode.yaml.erb'
-        owner 'sd-agent'
-        group 'sd-agent'
-        mode 0644
-        variables(
-                  :hdfs_namenode_jmx_uri => node['serverdensity']['hdfs_namenode_jmx_uri'],
                   )
         notifies :restart, 'service[sd-agent]', :delayed
     end

@@ -48,8 +48,8 @@ default['serverdensity']['couchdb_server'] = nil # Set this attribute to install
 default['serverdensity']['couchdb_user'] = nil
 default['serverdensity']['couchdb_password'] = nil
 default['serverdensity']['couchdb_timeout'] = nil
-default['serverdensity']['couchdb_whitelist'] = [] # Use an array
-default['serverdensity']['couchdb_blacklist'] = [] # Use an array
+default['serverdensity']['couchdb_whitelist'] = [] # Use an array 
+default['serverdensity']['couchdb_blacklist'] = [] # Use an array 
 
 default['serverdensity']['directory'] = [] # Set this attribute to install the Directory plugin (Use an Array)
 
@@ -71,11 +71,8 @@ default['serverdensity']['haproxy_url'] = nil # Set this attribute to install th
 default['serverdensity']['haproxy_username'] = nil
 default['serverdensity']['haproxy_password'] = nil
 
-default['serverdensity']['hdfs_datanode_jmx_uri'] = nil # Set this attribute to install the HDFS Plugin
-default['serverdensity']['hdfs_namenode_jmx_uri'] = nil
-
 default['serverdensity']['kafka_c_connect_str'] = nil # Set this attribute to install the Kafka Consumer plugin
-default['serverdensity']['kafka_c_zk_connect_str'] = nil
+default['serverdensity']['kafka_c_zk_connect_str'] = nil 
 default['serverdensity']['kafka_c_zk_timeout'] = nil
 default['serverdensity']['kafka_c_kafka_timeout'] = nil
 default['serverdensity']['kafka_c_my_consumer'] = nil
@@ -114,7 +111,7 @@ default['serverdensity']['phpfpm_user'] = nil
 default['serverdensity']['phpfpm_password'] = nil
 
 default['serverdensity']['postfix_directory'] = nil # Set this attribute to install the Postfix plugin
-default['serverdensity']['postfix_queues'] = ["incoming","deferred","active"] # Use an array
+default['serverdensity']['postfix_queues'] = ["incoming","deferred","active"] # Use an array 
 
 default['serverdensity']['postgres_host'] = nil # Set this attribute to install the Postgres plugin
 default['serverdensity']['postgres_port'] = nil
@@ -127,8 +124,8 @@ default['serverdensity']['rabbitmq_api_url'] = nil # Set this attribute to insta
 default['serverdensity']['rabbitmq_user'] = nil
 default['serverdensity']['rabbitmq_pass'] = nil
 default['serverdensity']['rabbitmq_nodes'] = [] # Use an array
-default['serverdensity']['rabbitmq_nodes_regexes'] = [] # Use an array
-default['serverdensity']['rabbitmq_queues'] = [] # Use an array
+default['serverdensity']['rabbitmq_nodes_regexes'] = [] # Use an array 
+default['serverdensity']['rabbitmq_queues'] = [] # Use an array 
 default['serverdensity']['rabbitmq_queues_regexes'] = [] # Use an array
 
 default['serverdensity']['redis_host'] = nil # Set this attribute to install the Redis plugin
@@ -150,7 +147,3 @@ default['serverdensity']['supervisord_scoket'] = nil
 
 default['serverdensity']['varnishstat_path'] = nil # Set this attribute to install the Varnish plugin
 default['serverdensity']['varnishstat_name'] = nil
-
-default['serverdensity']['zk_host'] = nil # Set this attribute to install the Zookeeper plugin
-default['serverdensity']['zk_port'] = nil
-default['serverdensity']['zk_timeout'] = nil
