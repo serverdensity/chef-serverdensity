@@ -32,7 +32,7 @@ case node["platform"]
       allow false
     end
 
-  when 'redhat', 'centos', 'amazon'
+  when 'centos', 'redhat', 'amazon', 'scientific', 'oracle'
 
     yum_repository 'serverdensity' do
       description 'Server Density sd-agent'
