@@ -16,6 +16,8 @@ supports 'ubuntu'
 supports 'debian'
 supports 'centos'
 supports 'redhat'
+supports 'scientific'
+supports 'oracle'
 
 recipe 'serverdensity::default', 'Installs serverdensity agent'
 
