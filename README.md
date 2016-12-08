@@ -43,6 +43,8 @@ Requirements
 - RHEL
 - CentOS
 - Amazon
+- Oracle
+- Scientific
 
 Attributes
 ----------
