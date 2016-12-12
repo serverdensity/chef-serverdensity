@@ -8,8 +8,9 @@ This cookbook installs the v2 [Server Density](http://www.serverdensity.com/) ag
 * sd-agent-couchdb
 * sd-agent-directory
 * sd-agent-docker
-* sd-agent-elastic 
+* sd-agent-elastic
 * sd-agent-haproxy
+* sd-agent-hdfs
 * sd-agent-kafka-consumer
 * sd-agent-memcache
 * sd-agent-mongo
@@ -24,15 +25,16 @@ This cookbook installs the v2 [Server Density](http://www.serverdensity.com/) ag
 * sd-agent-riak
 * sd-agent-supervisord
 * sd-agent-varnish
+* sd-agent-zookeeper
 
 Requirements
 ------------
 #### Cookbooks
-- `apt` 
+- `apt`
 - `yum`
 - `dpkg_autostart`
 
-#### Gems  
+#### Gems
 - `rest-client`
 
 #### Platforms:
@@ -40,6 +42,9 @@ Requirements
 - Debian
 - RHEL
 - CentOS
+- Amazon
+- Oracle
+- Scientific
 
 Attributes
 ----------
@@ -75,8 +80,8 @@ You can also include any of the attributes from `attributes/default.rb` in your 
 {
   "name":"my_node",
   "serverdensity": {"token": "b97da80a41c4f61bff05975ee51eb1aa","sd_account":"example","apache_status_url":"http://localhost/server-status?auto"},
-  "run_list": [ 
-    "recipe[serverdensity]" 
+  "run_list": [
+    "recipe[serverdensity]"
   ]
 }
 ```

@@ -1,12 +1,16 @@
 ChangeLog for chef-serverdensity
 ================================
+3.0.6 (08-12-2016)
+------------------
+- Added support for HDFS and Zookeeper plugins
+
 3.0.5 (04-10-2016)
 ------------------
-- Added `timeout` option for Elasticsearch plugin 
+- Added `timeout` option for Elasticsearch plugin
 
 3.0.4 (29-09-2016)
 ------------------
-- Added Elasticsearch support 
+- Added Elasticsearch support
 
 3.0.3 (22-09-2016)
 ------------------
@@ -14,21 +18,21 @@ ChangeLog for chef-serverdensity
 
 3.0.2 (19-09-2016)
 ------------------
-- Added HAProxy support 
+- Added HAProxy support
 - Improved handling of attributes which use arrays.
 
 3.0.1 (01-09-2016)
 ------------------
-- Improved recipe to ensure that the sd-agent service is only restarted after a configuration change. 
+- Improved recipe to ensure that the sd-agent service is only restarted after a configuration change.
 - Small template tweaks
 - Better comments in attributes to describe when to use arrays
 - Small fixes to the recipe to point to correct packages and yaml files
-- Removal/update of deprecated features 
+- Removal/update of deprecated features
 - [Foodcritic](http://www.foodcritic.io/) fixes
 
 3.0.0 (14-04-2016)
 ------------------
-- Rewrote entire recipe to install the Server Density v2 agent. v1 agent support has been removed. 
+- Rewrote entire recipe to install the Server Density v2 agent. v1 agent support has been removed.
 
 2.1.4 (26-03-2015)
 ------------------
@@ -36,7 +40,7 @@ ChangeLog for chef-serverdensity
 
 2.1.3 (12-03-2015)
 ------------------
-- Add matchers library for ChefSpec 
+- Add matchers library for ChefSpec
 
 2.1.2 (12-03-2015)
 ------------------
