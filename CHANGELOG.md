@@ -1,5 +1,9 @@
 ChangeLog for chef-serverdensity
 ================================
+3.0.7 (10-01-2017)
+------------------
+- Added support for Couchbase plugin
+
 3.0.6 (08-12-2016)
 ------------------
 - Added support for HDFS and Zookeeper plugins
