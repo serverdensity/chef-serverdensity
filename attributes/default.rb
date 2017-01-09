@@ -44,6 +44,12 @@ default['serverdensity']['consul_url'] = nil # Set this attribute to install the
 default['serverdensity']['consul_checks'] = nil
 default['serverdensity']['consul_whitelist'] = []  # Use an array
 
+
+default['serverdensity']['couchbase_server'] = nil # Set this attribute to install the CouchDB plugin
+default['serverdensity']['couchbase_user'] = nil
+default['serverdensity']['couchbase_password'] = nil
+default['serverdensity']['couchbase_timeout'] = nil
+
 default['serverdensity']['couchdb_server'] = nil # Set this attribute to install the CouchDB plugin
 default['serverdensity']['couchdb_user'] = nil
 default['serverdensity']['couchdb_password'] = nil
