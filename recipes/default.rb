@@ -98,6 +98,23 @@ if node['serverdensity']['consul_url']
     end
 end
 
+if node['serverdensity']['couchbase_server']
+    package 'sd-agent-couchbase'
+    template '/etc/sd-agent/conf.d/couchbase.yaml' do
+        source 'couchbase.yaml.erb'
+        owner 'sd-agent'
+        group 'sd-agent'
+        mode 0644
+        variables(
+                  :couchbase_server => node['serverdensity']['couchbase_server'],
+                  :couchbase_user => node['serverdensity']['couchbase_user'],
+                  :couchbase_password => node['serverdensity']['couchbase_password'],
+                  :couchbase_timeout => node['serverdensity']['couchbase_timeout'],
+                  )
+        notifies :restart, 'service[sd-agent]', :delayed
+    end
+end
+
 if node['serverdensity']['couchdb_server']
     package 'sd-agent-couchdb'
     template '/etc/sd-agent/conf.d/couch.yaml' do
