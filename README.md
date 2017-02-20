@@ -5,6 +5,7 @@ This cookbook installs the v2 [Server Density](http://www.serverdensity.com/) ag
 * sd-agent-apache
 * sd-agent-btrfs
 * sd-agent-consul
+* sd-agent-couchbase
 * sd-agent-couchdb
 * sd-agent-directory
 * sd-agent-docker

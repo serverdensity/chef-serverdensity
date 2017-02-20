@@ -1,0 +1,9 @@
+init_config:
+
+instances:
+  - server: <%= @couchbase_server %>
+    user: <%= @couchbase_user %>
+    password: <%= @couchbase_password %>
+<% if @couchbase_timeout %>
+    timeout: <%= @couchbase_timeout %>
+<% end %>
