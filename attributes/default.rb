@@ -152,7 +152,7 @@ default['serverdensity']['supervisord_host'] = nil
 default['serverdensity']['supervisord_port'] = nil
 default['serverdensity']['supervisord_user'] = nil
 default['serverdensity']['supervisord_pass'] = nil
-default['serverdensity']['supervisord_scoket'] = nil
+default['serverdensity']['supervisord_socket'] = nil
 
 default['serverdensity']['varnishstat_path'] = nil # Set this attribute to install the Varnish plugin
 default['serverdensity']['varnishstat_name'] = nil
