@@ -47,6 +47,8 @@ Requirements
 - Oracle
 - Scientific
 
+> Support for Ubuntu Precise is now deprecated and agent updates are no longer provided after 2.1.6. This cookbook will install agent 2.1.6 for any server detected as Ubuntu Precise
+
 Attributes
 ----------
 #### serverdensity::default
