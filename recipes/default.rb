@@ -45,14 +45,9 @@ case node["platform"]
       allow false
     end
 
-  when 'centos', 'redhat', 'amazon', 'scientific', 'oracle'
+  when 'centos', 'redhat', 'scientific', 'oracle'
     major = node['platform_version'].to_i
     if major == 6
-      if node[:kernel][:machine] == "i686"
-         rpm_arch = "i386"
-      else
-         rpm_arch = node[:kernel][:machine]
-      end
       remote_file "#{Chef::Config[:file_cache_path]}/epel-release-latest.noarch.rpm" do
         source "https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm"
         notifies :install, "rpm_package[epel-release]", :immediately
@@ -83,9 +78,18 @@ case node["platform"]
         action :nothing
       end
     end
+
     yum_repository 'serverdensity' do
       description 'Server Density sd-agent'
       baseurl 'https://archive.serverdensity.com/el/$releasever'
+      gpgkey 'https://archive.serverdensity.com/sd-packaging-public.key'
+    end
+
+  when 'amazon'
+
+    yum_repository 'serverdensity' do
+      description 'Server Density sd-agent'
+      baseurl 'https://archive.serverdensity.com/el/6'
       gpgkey 'https://archive.serverdensity.com/sd-packaging-public.key'
     end
 end
