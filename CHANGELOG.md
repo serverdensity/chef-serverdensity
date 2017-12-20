@@ -1,5 +1,11 @@
 ChangeLog for chef-serverdensity
 ================================
+3.1.0 (22-11-2017)
+------------------
+- Added support for new deb repositories
+- Added support for el6 python27 dependency
+- Ensured Amazon linux only install el6 packages
+
 3.0.7 (10-01-2017)
 ------------------
 - Added support for Couchbase plugin
