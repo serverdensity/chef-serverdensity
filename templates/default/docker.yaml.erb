@@ -9,6 +9,8 @@ init_config:
 
   # Timeout on Docker socket connection. You may have to increase it if you have many containers.
   # socket_timeout: 5
+  
+  min_collection_interval: <%= @docker_collection_interval %>
 
 instances:
     # URL of the Docker daemon socket to reach the Docker API. HTTP also works.

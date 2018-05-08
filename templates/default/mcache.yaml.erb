@@ -1,5 +1,5 @@
 init_config:
-
+  min_collection_interval: <%= @memcache_collection_interval %>
 instances:
   - url: <%= @memcache_url %>  # url used to connect to the memcached instance
 <% if @memcache_port %>

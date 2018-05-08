@@ -8,7 +8,7 @@
 #          Defaults:sd-agent !requiretty
 
 init_config:
-
+  min_collection_interval: <%= @postfix_collection_interval %>
 instances:
   - directory: <%=  @postfix_directory -%>
 <%- if !@postfix_queues.empty? -%>  

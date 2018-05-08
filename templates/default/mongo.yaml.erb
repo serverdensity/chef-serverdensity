@@ -1,5 +1,5 @@
 init_config:
-
+  min_collection_interval: <%= @mongo_collection_interval %>
 instances:
   - server: <%= @mongo_url %>
 <%- if @mongo_timeout -%>

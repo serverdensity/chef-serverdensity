@@ -1,5 +1,5 @@
 init_config:
-
+  min_collection_interval: <%= @zk_collection_interval %>
 instances:
   - host: <%= @zk_host %>
 <% if @pzk_port %>

@@ -1,5 +1,5 @@
 init_config:
-
+  min_collection_interval: <%= @varnishstat_collection_interval %>
 instances:
   # The full path to the varnishstat binary
   - varnishstat: <%=  @varnishstat_path -%>
