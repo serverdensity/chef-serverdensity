@@ -1,5 +1,5 @@
 init_config:
-
+  min_collection_interval: <%= @haproxy_collection_interval %>
 instances:
   - url: <%= @haproxy_url %>
 <% if @haproxy_username %>  

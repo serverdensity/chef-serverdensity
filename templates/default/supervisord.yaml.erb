@@ -29,6 +29,7 @@
 #
 
 init_config:
+  min_collection_interval: <%= @supervisord_collection_interval %>
 
 instances:
    - name: <%=  @supervisord_name -%>    # Required. An arbitrary name to identify the supervisord server

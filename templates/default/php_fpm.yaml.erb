@@ -1,5 +1,5 @@
 init_config:
-
+  min_collection_interval: <%= @phpfpm_collection_interval %>
 instances:
   - # Get metrics from your FPM pool with this URL
     status_url: <%=  @phpfpm_status_url -%>

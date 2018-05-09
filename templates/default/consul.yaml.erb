@@ -1,6 +1,6 @@
 # This check takes no init_config
 init_config:
-
+  min_collection_interval: <%= @consul_collection_interval %>
 instances:
     # Where your Consul HTTP Server Lives
     - url: <%=  @consul_url %>

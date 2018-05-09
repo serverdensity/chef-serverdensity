@@ -1,5 +1,5 @@
 init_config:
-
+  min_collection_interval: <%= @mysql_collection_interval %>
 instances:
   - server: <%= @mysql_server %>
 <%- if @mysql_user -%>

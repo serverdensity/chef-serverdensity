@@ -9,6 +9,8 @@ init_config:
   kafka_timeout: <%=  @kafka_c_kafka_timeout -%>
 <%- end -%> 
 
+  min_collection_interval: <%= @kafka_collection_interval %>
+
 instances:
    - kafka_connect_str: <%=  @kafka_c_connect_str -%>
 
