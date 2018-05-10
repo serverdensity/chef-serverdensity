@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+ - 2.5
+
+git:
+  depth: 3
+
+matrix:
+  fast_finish: true
+
+install:
+  - gem install foodcritic
+
+script:
+  - foodcritic .
