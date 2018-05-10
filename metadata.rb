@@ -20,22 +20,3 @@ supports 'scientific'
 supports 'oracle'
 
 recipe 'serverdensity::default', 'Installs serverdensity agent'
-
-
-## Basic Config
-
-attribute "serverdensity/account",
-  :display_name => "Your Server density account",
-  :description => "Your Server Density subdomain, i.e. companyname.serverdensity.io",
-  :type => "string",
-  :required => "required"
-
-attribute "serverdensity/agent_key",
-  :display_name => "Your Server density agent key",
-  :description => "Your Server Density agent key",
-  :type => "string"
-
-attribute "serverdensity/enabled",
-  :display_name => "Enablement of sd-agent",
-  :description => "Should sd-agent be running, default true",
-  :default => true
