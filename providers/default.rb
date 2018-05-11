@@ -10,7 +10,6 @@ end
 use_inline_resources
 action :clear do
   converge_by 'delete all existing Server Density alerts for device' do
-    @new_resource.updated_by_last_action device.reset
   end if device
 end
 
@@ -34,14 +33,11 @@ action :configure do
 
   link.to template.path
   link.run_action :create
-
-  @new_resource.updated_by_last_action template.updated_by_last_action?
 end
 
 action :disable do
   service.run_action :stop if service.running
   service.run_action :disable if service.enabled
-  @new_resource.updated_by_last_action service.updated_by_last_action?
 end
 
 action :enable do
@@ -51,7 +47,6 @@ action :enable do
     service.run_action :enable unless service.enabled
     service.run_action :start
   end
-  @new_resource.updated_by_last_action service.updated_by_last_action?
 end
 
 action :setup do
@@ -59,13 +54,11 @@ action :setup do
     when token
       ServerDensity::API.configure 2.0, token
   end
-  @new_resource.updated_by_last_action !api.nil?
 end
 
 action :sync do
   converge_by 'update metadata on Server Density' do
     if result = device.update(metadata)
-      @new_resource.updated_by_last_action !result.empty?
       node.normal.serverdensity.metadata = result.merge(metadata)
     end
   end if sync_required? && device
