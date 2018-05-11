@@ -7,6 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '3.1.1'
 issues_url       'https://github.com/serverdensity/chef-serverdensity/issues'
 source_url       'https://github.com/serverdensity/chef-serverdensity'
+chef_version     '>= 12.5' if respond_to?(:chef_version)
 
 depends 'apt'
 depends 'yum'
