@@ -7,7 +7,6 @@ def whyrun_supported?
 end
 
 # actions
-use_inline_resources
 action :clear do
   converge_by 'delete all existing Server Density alerts for device' do
   end if device
