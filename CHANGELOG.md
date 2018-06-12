@@ -1,5 +1,14 @@
 ChangeLog for chef-serverdensity
 ================================
+3.2.0 (09-05-2018)
+------------------
+- Simplifies device lookup/creation via the Server Density API.
+- Adds support for Chef 13.
+
+3.1.1 (09-05-2018)
+------------------
+- Adds the option to set `min_collection_interval` for the currently available plugins.
+
 3.1.0 (22-11-2017)
 ------------------
 - Added support for new deb repositories
