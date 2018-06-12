@@ -51,6 +51,25 @@ Requirements
 
 Attributes
 ----------
+#### Required Attributes
+attribute "serverdensity/account",
+  :display_name => "Your Server Density account",
+  :description => "Your Server Density subdomain, i.e. companyname.serverdensity.io",
+  :type => "string",
+  :required => "required"
+
+attribute "serverdensity/agent_key",
+  :display_name => "Your Server Density agent key",
+  :description => "Your Server Density agent key",
+  :type => "string"
+
+or
+
+attribute "serverdensity/token",
+  :display_name => "Your Server Density API Token",
+  :description => "Your Server Density API Token",
+  :type => "string"
+
 #### serverdensity::default
 Check `attributes/default.rb` for the full list
 
@@ -89,15 +108,6 @@ You can also include any of the attributes from `attributes/default.rb` in your 
 }
 ```
 
-Contributing
-------------
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
-
 License and Authors
 -------------------
 ## References
@@ -115,7 +125,10 @@ License and Authors
 * Rewritten by: Mal Graty <mal.graty@googlemail.com>
 * Other Contributors:
 * [Joe Marty](https://github.com/mltsy)
+
 * Rewritten by: Server Density <hello@serverdensity.com>
+* Other Contributors:
+* [Thijs Cramer](https://github.com/FireDrunk)
 
 ## License
 

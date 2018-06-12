@@ -6,14 +6,9 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+require "json"
 
 return unless node["serverdensity"]["enabled"]
-
-chef_gem 'rest-client' do
-    version '~> 1.7.3'
-    action :install
-    compile_time false if Chef::Resource::ChefGem.method_defined?(:compile_time)
-end
 
 case node["platform"]
 
@@ -101,8 +96,77 @@ service 'sd-agent' do
   action :nothing
 end
 
-serverdensity node.name do
-    token node['serverdensity']['token']
+if node['serverdensity']['token']
+  begin
+    lookup_resp = Chef::HTTP.new('https://api.serverdensity.io').get("/inventory/resources?token=#{node['serverdensity']['token']}&filter=%7b%22name%22%3a%22#{node['fqdn']}%22%2c%22type%22%3a%22device%22%7d")
+    lookup_parsed = JSON.parse(lookup_resp)
+    if lookup_parsed.empty?
+      meta = {
+        group: node["serverdensity"]["device_group"] || 'chef-autodeploy',
+        hostname: node['serverdensity']['hostname'] || node["fqdn"],
+        name: node['fqdn']
+      }
+      case
+        when (node["ec2"]["instance_id"] rescue false)
+          prov = {provider: 'amazon', providerId: node["ec2"]["instance_id"]}
+        when (node["opsworks"]["instance"]["aws_instance_id"] rescue false)
+          prov = {provider: 'amazon', providerId: node["opsworks"]["instance"]["aws_instance_id"]}
+        else
+          prov = {}
+      end
+      meta.merge(prov)
+      begin
+        new_resp = Chef::HTTP.new('https://api.serverdensity.io/').post("/inventory/devices?token=#{node['serverdensity']['token']}", URI.encode_www_form(meta) )
+        new_parsed = JSON.parse(new_resp)
+        node.default['serverdensity']['agent_key'] = new_parsed['agentKey']
+      rescue => e
+        puts "Device creation failed. Contact SD Support for assistance - hello@serverdensity.com"
+        puts e
+        return
+      end
+    else
+      node.default['serverdensity']['agent_key'] = lookup_parsed.first['agentKey']
+    end
+  rescue => e
+    puts "Device lookup failed. Contact SD Support for assistance - hello@serverdensity.com"
+    puts e
+    return
+  end
+end
+
+if node['serverdensity']['agent_key']
+  node.default['serverdensity']['agent_key'] = node['serverdensity']['agent_key']
+end
+
+if node.default['serverdensity']['agent_key']
+    template '/etc/sd-agent/config.cfg' do
+        source 'agent.cfg.erb'
+        owner 'sd-agent'
+        group 'sd-agent'
+        manage_symlink_source true
+        mode 0644
+        variables(
+                  :sd_account => node['serverdensity']['sd_account'],
+                  :agent_key => node.default['serverdensity']['agent_key'],
+                  :proxy_host => node['serverdensity']['proxy_host'],
+                  :proxy_port => node['serverdensity']['proxy_port'],
+                  :proxy_user => node['serverdensity']['proxy_user'],
+                  :proxy_password => node['serverdensity']['proxy_password'],
+                  :proxy_forbid_method_switch => node['serverdensity']['proxy_forbid_method_switch'],
+                  :hostname => node['serverdensity']['hostname'],
+                  :plugin_dir => node['serverdensity']['plugin_dir'],
+                  :log_level => node['serverdensity']['log_level'],
+                  :collector_log_file => node['serverdensity']['collector_log_file'],
+                  :forwarder_log_file => node['serverdensity']['forwarder_log_file'],
+                  :log_to_syslog => node['serverdensity']['log_to_syslog'],
+                  :syslog_host => node['serverdensity']['syslog_host'],
+                  :syslog_port => node['serverdensity']['syslog_port'],
+                  :tmp_directory => node['serverdensity']['tmp_directory'],
+                  :pidfile_directory => node['serverdensity']['pidfile_directory'],
+                  :listen_port => node['serverdensity']['listen_port'],
+                  )
+        notifies :restart, 'service[sd-agent]', :delayed
+    end
 end
 
 if node['serverdensity']['apache_status_url']
