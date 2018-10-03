@@ -1,5 +1,9 @@
 ChangeLog for chef-serverdensity
 ================================
+3.2.1 (03-10-2018)
+------------------
+- Adds support for Ubuntu Bionic.
+
 3.2.0 (09-05-2018)
 ------------------
 - Simplifies device lookup/creation via the Server Density API.
