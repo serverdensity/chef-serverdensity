@@ -22,7 +22,7 @@ case node["platform"]
         node.run_state['repo_dist'] = 'trusty'
       when 'precise', 'quantal', 'raring', 'saucy'
         node.run_state['repo_dist'] = 'all'
-      when 'wheezy', 'jessie', 'stretch'
+      when 'wheezy', 'jessie', 'stretch', 'bionic'
         node.run_state['repo_dist'] = node['lsb']['codename'].downcase
       else
         node.run_state['repo_dist'] = 'all'
