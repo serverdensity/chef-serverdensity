@@ -16,13 +16,15 @@ case node["platform"]
     include_recipe 'apt'
 
     case node['lsb']['codename'].downcase
+      when 'bionic', 'cosmic'
+        node.run_state['repo_dist'] = 'bionic'
       when 'artful', 'yakkety', 'xenial', 'zesty'
         node.run_state['repo_dist'] = 'xenial'
       when 'trusty', 'utopic', 'vivid', 'wily'
         node.run_state['repo_dist'] = 'trusty'
       when 'precise', 'quantal', 'raring', 'saucy'
         node.run_state['repo_dist'] = 'all'
-      when 'wheezy', 'jessie', 'stretch', 'bionic'
+      when 'wheezy', 'jessie', 'stretch'
         node.run_state['repo_dist'] = node['lsb']['codename'].downcase
       else
         node.run_state['repo_dist'] = 'all'
