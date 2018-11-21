@@ -1,5 +1,9 @@
 ChangeLog for chef-serverdensity
 ================================
+3.2.2 (15-10-2018)
+------------------
+- Adds support for Ubuntu Cosmic.
+
 3.2.1 (03-10-2018)
 ------------------
 - Adds support for Ubuntu Bionic.
