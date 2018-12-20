@@ -1,5 +1,9 @@
 ChangeLog for chef-serverdensity
 ================================
+3.2.3 (20-12-2018)
+------------------
+- Fix and improve docker daemon plugin configs.
+
 3.2.2 (15-10-2018)
 ------------------
 - Adds support for Ubuntu Cosmic.

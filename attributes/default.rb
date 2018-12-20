@@ -64,8 +64,13 @@ default['serverdensity']['couchdb_collection_interval'] = '0'
 default['serverdensity']['directory'] = [] # Set this attribute to install the Directory plugin (Use an Array)
 
 default['serverdensity']['docker_root'] = nil # Set this attribute to install the Docker plugin
-default['serverdensity']['docker_url'] = nil
+default['serverdensity']['docker_url'] = 'unix://var/run/docker.sock'
 default['serverdensity']['docker_collection_interval'] = '0'
+default['serverdensity']['collect_container_count'] = false
+default['serverdensity']['collect_container_size'] = false
+default['serverdensity']['collect_volume_count'] = false
+default['serverdensity']['collect_images_stats'] = false
+default['serverdensity']['collect_image_size'] = false
 
 default['serverdensity']['elastic_url'] = nil # Set this attribute to install the Elasticsearch plugin
 default['serverdensity']['elastic_username'] = nil
