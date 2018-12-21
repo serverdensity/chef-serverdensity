@@ -125,11 +125,12 @@ License and Authors
 * Modified by: Server Density <hello@serverdensity.com>
 * Rewritten by: Mal Graty <mal.graty@googlemail.com>
 * Other Contributors:
-* [Joe Marty](https://github.com/mltsy)
+  * [Joe Marty](https://github.com/mltsy)
 
 * Rewritten by: Server Density <hello@serverdensity.com>
 * Other Contributors:
-* [Thijs Cramer](https://github.com/FireDrunk)
+  * [Thijs Cramer](https://github.com/FireDrunk)
+  * [Nikolay Antsiferov](https://github.com/Nklya)
 
 ## License
 
