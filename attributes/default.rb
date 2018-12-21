@@ -64,8 +64,13 @@ default['serverdensity']['couchdb_collection_interval'] = '0'
 default['serverdensity']['directory'] = [] # Set this attribute to install the Directory plugin (Use an Array)
 
 default['serverdensity']['docker_root'] = nil # Set this attribute to install the Docker plugin
-default['serverdensity']['docker_url'] = nil
+default['serverdensity']['docker_url'] = 'unix://var/run/docker.sock'
 default['serverdensity']['docker_collection_interval'] = '0'
+default['serverdensity']['collect_container_count'] = false
+default['serverdensity']['collect_container_size'] = false
+default['serverdensity']['collect_volume_count'] = false
+default['serverdensity']['collect_images_stats'] = false
+default['serverdensity']['collect_image_size'] = false
 
 default['serverdensity']['elastic_url'] = nil # Set this attribute to install the Elasticsearch plugin
 default['serverdensity']['elastic_username'] = nil
@@ -173,6 +178,22 @@ default['serverdensity']['supervisord_user'] = nil
 default['serverdensity']['supervisord_pass'] = nil
 default['serverdensity']['supervisord_socket'] = nil
 default['serverdensity']['supervisord_collection_interval'] = '0'
+
+# You need to define array of hashes with all checks you need, for example:
+# default['serverdensity']['tcp_checks'] = [
+#   { # Long form
+#     name: 'Check localhost 22 port',
+#     host: 'localhost',
+#     port: 22,
+#     timeout: 5,
+#     collect_response_time: true,
+#   },
+#   { # Short form
+#     host: 'localhost',
+#     port: 80,
+#   },
+# ]
+default['serverdensity']['tcp_checks'] = nil # Set this attribute to install the TCP plugin
 
 default['serverdensity']['varnishstat_path'] = nil # Set this attribute to install the Varnish plugin
 default['serverdensity']['varnishstat_name'] = nil

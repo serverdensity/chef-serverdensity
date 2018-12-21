@@ -1,0 +1,14 @@
+# This file is managed by Chef. Any modifications will be lost.
+
+init_config:
+
+instances:
+  <% @tcp_checks.each do |check| %>
+  - name: <%= check['name'] || "Check #{check['host']}:#{check['port']}" %>
+    host: <%= check['host'] %>
+    port: <%= check['port'] %>
+    collect_response_time: <%= check['collect_response_time'] || false %>
+    <% if check['timeout'] %>
+    timeout: <%= check['timeout'] %>
+    <% end %>
+  <% end %>

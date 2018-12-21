@@ -273,7 +273,13 @@ end
 
 if node['serverdensity']['docker_root']
     package 'sd-agent-docker'
-    template '/etc/sd-agent/conf.d/docker.yaml' do
+    # Add sd-agent to docker group (Docker plugin needs it)
+    group 'docker' do
+        members 'sd-agent'
+        append true
+        action :modify
+    end
+    template '/etc/sd-agent/conf.d/docker_daemon.yaml' do
         source 'docker.yaml.erb'
         owner 'sd-agent'
         group 'sd-agent'
@@ -282,6 +288,11 @@ if node['serverdensity']['docker_root']
                   :docker_root => node['serverdensity']['docker_root'],
                   :docker_url => node['serverdensity']['docker_url'],
                   :docker_collection_interval => node['serverdensity']['docker_collection_interval'],
+                  :collect_container_count => node['serverdensity']['collect_container_count'],
+                  :collect_container_size => node['serverdensity']['collect_container_size'],
+                  :collect_volume_count => node['serverdensity']['collect_volume_count'],
+                  :collect_images_stats => node['serverdensity']['collect_images_stats'],
+                  :collect_image_size => node['serverdensity']['collect_image_size'],
                   )
         notifies :restart, 'service[sd-agent]', :delayed
     end
@@ -600,6 +611,20 @@ if node['serverdensity']['supervisord_name']
         notifies :restart, 'service[sd-agent]', :delayed
     end
 end
+
+if node['serverdensity']['tcp_checks']
+      package 'sd-agent-tcp-check'
+      template '/etc/sd-agent/conf.d/tcp_check.yaml' do
+          source 'tcp_check.yaml.erb'
+          owner 'sd-agent'
+          group 'sd-agent'
+          mode 0644
+          variables(
+                    :tcp_checks => node['serverdensity']['tcp_checks'],
+                    )
+          notifies :restart, 'service[sd-agent]', :delayed
+      end
+  end
 
 if node['serverdensity']['varnishstat_path']
     package 'sd-agent-varnish'
