@@ -25,6 +25,7 @@ This cookbook installs the v2 [Server Density](http://www.serverdensity.com/) ag
 * sd-agent-redis
 * sd-agent-riak
 * sd-agent-supervisord
+* sd-agent-tcp-check
 * sd-agent-varnish
 * sd-agent-zookeeper
 

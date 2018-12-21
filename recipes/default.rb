@@ -606,6 +606,20 @@ if node['serverdensity']['supervisord_name']
     end
 end
 
+if node['serverdensity']['tcp_checks']
+      package 'sd-agent-tcp-check'
+      template '/etc/sd-agent/conf.d/tcp_check.yaml' do
+          source 'tcp_check.yaml.erb'
+          owner 'sd-agent'
+          group 'sd-agent'
+          mode 0644
+          variables(
+                    :tcp_checks => node['serverdensity']['tcp_checks'],
+                    )
+          notifies :restart, 'service[sd-agent]', :delayed
+      end
+  end
+
 if node['serverdensity']['varnishstat_path']
     package 'sd-agent-varnish'
     template '/etc/sd-agent/conf.d/varnish.yaml' do

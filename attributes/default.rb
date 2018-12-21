@@ -179,6 +179,23 @@ default['serverdensity']['supervisord_pass'] = nil
 default['serverdensity']['supervisord_socket'] = nil
 default['serverdensity']['supervisord_collection_interval'] = '0'
 
+# You need to define array of hashes with all checks you need
+# i.e.
+# default['serverdensity']['tcp_checks'] = [
+#   { # Long form
+#     name: 'Check localhost 22 port',
+#     host: 'localhost',
+#     port: 22,
+#     timeout: 5,
+#     collect_response_time: true,
+#   },
+#   { # Short form
+#     host: 'localhost',
+#     port: 80,
+#   },
+# ]
+default['serverdensity']['tcp_checks'] = nil # Set this attribute to install the TCP plugin
+
 default['serverdensity']['varnishstat_path'] = nil # Set this attribute to install the Varnish plugin
 default['serverdensity']['varnishstat_name'] = nil
 default['serverdensity']['varnishstat_collection_interval'] = '0'

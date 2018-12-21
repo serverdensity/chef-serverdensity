@@ -2,7 +2,8 @@ ChangeLog for chef-serverdensity
 ================================
 3.2.3 (20-12-2018)
 ------------------
-- Fix and improve docker daemon plugin configs.
+- Fixed and improved docker daemon plugin configs.
+- Added support for TCP plugin
 
 3.2.2 (15-10-2018)
 ------------------
