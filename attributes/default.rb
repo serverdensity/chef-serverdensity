@@ -179,8 +179,7 @@ default['serverdensity']['supervisord_pass'] = nil
 default['serverdensity']['supervisord_socket'] = nil
 default['serverdensity']['supervisord_collection_interval'] = '0'
 
-# You need to define array of hashes with all checks you need
-# i.e.
+# You need to define array of hashes with all checks you need, for example:
 # default['serverdensity']['tcp_checks'] = [
 #   { # Long form
 #     name: 'Check localhost 22 port',
