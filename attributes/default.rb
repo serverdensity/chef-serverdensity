@@ -7,7 +7,7 @@ default['serverdensity']['enabled'] = true
 default['serverdensity']['sd_account'] = nil
 default['serverdensity']['token'] = nil
 
-default['serverdensity']['plugin_dir'] = '/etc/sd-agent/plugins'
+default['serverdensity']['plugin_dir'] = nil
 default['serverdensity']['plugin_options'] = {}
 
 default['serverdensity']['tmp_directory'] = nil
