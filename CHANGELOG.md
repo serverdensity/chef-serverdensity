@@ -1,5 +1,9 @@
 ChangeLog for chef-serverdensity
 ================================
+3.2.4 (27-12-2018)
+------------------
+- Fixed error when docker group doesn't exist
+
 3.2.3 (20-12-2018)
 ------------------
 - Fixed and improved docker daemon plugin configs.
