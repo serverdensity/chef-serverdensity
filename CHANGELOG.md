@@ -1,5 +1,11 @@
 ChangeLog for chef-serverdensity
 ================================
+3.2.4 (10-01-2019)
+------------------
+- Fixed error when docker group doesn't exist
+- Set plugin_dir to nil to prevent warnings in logs
+- Fixed nginx plugin ssl check
+
 3.2.3 (20-12-2018)
 ------------------
 - Fixed and improved docker daemon plugin configs.

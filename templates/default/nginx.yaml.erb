@@ -2,7 +2,4 @@ init_config:
   min_collection_interval: <%= @nginx_collection_interval %>
 instances:
   - nginx_status_url: <%= @nginx_status_url %>
-<%- if @nginx_ssl_validation -%>
-    ssl_validation: True
-<%- end -%>
-
+    ssl_validation: <%= @nginx_ssl_validation %>

@@ -273,11 +273,10 @@ end
 
 if node['serverdensity']['docker_root']
     package 'sd-agent-docker'
-    # Add sd-agent to docker group (Docker plugin needs it)
+    # Create docker group if not exist and add sd-agent to it (Docker plugin needs it)
     group 'docker' do
         members 'sd-agent'
         append true
-        action :modify
     end
     template '/etc/sd-agent/conf.d/docker_daemon.yaml' do
         source 'docker.yaml.erb'

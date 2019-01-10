@@ -7,7 +7,7 @@ default['serverdensity']['enabled'] = true
 default['serverdensity']['sd_account'] = nil
 default['serverdensity']['token'] = nil
 
-default['serverdensity']['plugin_dir'] = '/etc/sd-agent/plugins'
+default['serverdensity']['plugin_dir'] = nil
 default['serverdensity']['plugin_options'] = {}
 
 default['serverdensity']['tmp_directory'] = nil
@@ -122,7 +122,7 @@ default['serverdensity']['mysql_defaults_file'] = nil
 default['serverdensity']['mysql_collection_interval'] = '0'
 
 default['serverdensity']['nginx_status_url'] = nil # Set this attribute to install the Nginx plugin
-default['serverdensity']['nginx_ssl_validation'] = nil
+default['serverdensity']['nginx_ssl_validation'] = true
 default['serverdensity']['nginx_collection_interval'] = '0'
 
 default['serverdensity']['ntp_offset_threshold'] = nil # Set this attribute to install the NTP plugin
