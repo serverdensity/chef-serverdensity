@@ -1,5 +1,9 @@
 ChangeLog for chef-serverdensity
 ================================
+3.2.5 (14-02-2019)
+------------------
+- Fix log_to_syslog option, delete default listen_port value
+
 3.2.4 (10-01-2019)
 ------------------
 - Fixed error when docker group doesn't exist
