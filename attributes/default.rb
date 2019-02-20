@@ -26,11 +26,11 @@ default['serverdensity']['hostname'] = nil
 default['serverdensity']['collector_log_file'] = '/var/log/sd-agent/collector.log'
 default['serverdensity']['forwarder_log_file'] = '/var/log/sd-agent/forwarder.log'
 
-default['serverdensity']['log_to_syslog'] = 'yes'
+default['serverdensity']['log_to_syslog'] = false
 default['serverdensity']['syslog_host'] = nil
 default['serverdensity']['syslog_port'] = nil
 
-default['serverdensity']['listen_port'] = '17124'
+default['serverdensity']['listen_port'] = nil
 
 default['serverdensity']['device_group'] = nil
 

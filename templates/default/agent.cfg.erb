@@ -1,6 +1,6 @@
 #
 # Server Density Agent Config
-# See http://www.serverdensity.com/docs/agent/configvariables/
+# See https://support.serverdensity.com/hc/en-us/articles/360001065303-Agent-configuration-options
 
 [Main]
 sd_account: <%= @sd_account %>
@@ -29,18 +29,17 @@ proxy_forbid_method_switch: <%= @proxy_forbid_method_switch %>
 hostname: <%= @hostname %>
 <% end %>
 <% if @plugin_dir %>
-#
+# ========================================================================== #
 # Plugins
-#
-# Leave blank to ignore.
-# See https://support.serverdensity.com/hc/en-us/articles/213074438-Information-about-Custom-Plugins
-#
+# See https://support.serverdensity.com/hc/en-us/articles/360001082746
+# ========================================================================== #
+
 plugin_directory: <%= @plugin_dir  %>
 <% end %>
 <% if @log_level %>
 # ========================================================================== #
 # Logging
-# See https://support.serverdensity.com/hc/en-us/articles/213093038-Log-levels-agent-debug-mode
+# See https://support.serverdensity.com/hc/en-us/articles/360001065503
 # ========================================================================== #
 
 log_level: <%= @log_level %>
@@ -53,11 +52,9 @@ collector_log_file: <%= @collector_log_file %>
 <% if @forwarder_log_file %>
 forwarder_log_file: <%= @forwarder_log_file %>
 <% end %>
-<% if @log_to_syslog %>
 # if syslog is enabled but a host and port are not set, a local domain socket
 # connection will be attempted
 log_to_syslog: <%= @log_to_syslog %>
-<% end %>
 <% if @syslog_host %>
 syslog_host: <%= @syslog_host %>
 <% end %>
