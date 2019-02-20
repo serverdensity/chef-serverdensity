@@ -53,23 +53,26 @@ Requirements
 Attributes
 ----------
 #### Required Attributes
+```
 attribute "serverdensity/account",
   :display_name => "Your Server Density account",
   :description => "Your Server Density subdomain, i.e. companyname.serverdensity.io",
   :type => "string",
   :required => "required"
-
+```
+```
 attribute "serverdensity/agent_key",
   :display_name => "Your Server Density agent key",
   :description => "Your Server Density agent key",
   :type => "string"
-
+```
 or
-
+```
 attribute "serverdensity/token",
   :display_name => "Your Server Density API Token",
   :description => "Your Server Density API Token",
   :type => "string"
+```
 
 #### serverdensity::default
 Check `attributes/default.rb` for the full list
