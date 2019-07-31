@@ -1,5 +1,9 @@
 ChangeLog for chef-serverdensity
 ================================
+3.2.6 (31-07-2019)
+------------------
+- Adds support for Debian Buster.
+
 3.2.5 (14-02-2019)
 ------------------
 - Fix log_to_syslog option, delete default listen_port value
