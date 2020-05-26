@@ -1,5 +1,9 @@
 ChangeLog for chef-serverdensity
 ================================
+3.2.7 (26-05-2020)
+------------------
+- Adds support for Ubuntu Eoan and Focal.
+
 3.2.6 (31-07-2019)
 ------------------
 - Adds support for Debian Buster.
